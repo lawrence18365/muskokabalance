@@ -170,7 +170,7 @@ function initScrollProgress() {
 function initMagneticButtons() {
     if (!CONFIG.enableMagneticButtons || !isDesktop()) return;
 
-    const magneticElements = document.querySelectorAll('.nav-icon-btn, .link-arrow');
+    const magneticElements = document.querySelectorAll('.link-arrow');
 
     magneticElements.forEach(el => {
         let animationFrameId;
@@ -262,43 +262,68 @@ function initScrollAnimations() {
 }
 
 // ============================================
-// MOBILE MENU
+// MOBILE MENU (2025 Full-Screen Version)
 // ============================================
 
 function initMobileMenu() {
     const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const oldNavLinks = document.getElementById('navLinks');
 
-    if (!menuToggle || !navLinks) return;
+    if (!menuToggle || !mobileMenu) return;
 
     const closeMenu = () => {
         menuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('open');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('menu-open');
+
+        // Also close old nav if it exists
+        if (oldNavLinks) {
+            oldNavLinks.classList.remove('active');
+        }
+
         state.isMenuOpen = false;
     };
 
     const openMenu = () => {
         menuToggle.classList.add('active');
-        navLinks.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        menuToggle.setAttribute('aria-expanded', 'true');
+        mobileMenu.classList.add('open');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('menu-open');
+
+        // Track opening
+        if (typeof trackEvent === 'function') {
+            trackEvent('Navigation', 'open_mobile_menu', 'Mobile Menu');
+        }
+
         state.isMenuOpen = true;
     };
 
-    menuToggle.addEventListener('click', () => {
+    // Toggle menu on button click
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         state.isMenuOpen ? closeMenu() : openMenu();
     });
 
-    // Close menu on link click
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeMenu);
+    // Close menu when clicking links inside mobile menu
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            closeMenu();
+
+            // Track link clicks
+            if (typeof trackEvent === 'function') {
+                trackEvent('Navigation', 'click_mobile_link', link.textContent.trim());
+            }
+        });
     });
 
-    // Close menu on outside click
-    document.addEventListener('click', (e) => {
-        if (state.isMenuOpen &&
-            !menuToggle.contains(e.target) &&
-            !navLinks.contains(e.target)) {
+    // Close menu on outside click (backdrop)
+    mobileMenu.addEventListener('click', (e) => {
+        // Only close if clicking the backdrop, not the inner content
+        if (e.target === mobileMenu) {
             closeMenu();
         }
     });
@@ -310,6 +335,33 @@ function initMobileMenu() {
             menuToggle.focus();
         }
     });
+
+    // Prevent scroll on body when menu is open (double-lock)
+    let scrollY = 0;
+    const lockScroll = () => {
+        scrollY = window.scrollY;
+        document.body.style.top = `-${scrollY}px`;
+    };
+
+    const unlockScroll = () => {
+        document.body.style.top = '';
+        window.scrollTo(0, scrollY);
+    };
+
+    // Listen for menu state changes
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class') {
+                if (document.body.classList.contains('menu-open')) {
+                    lockScroll();
+                } else {
+                    unlockScroll();
+                }
+            }
+        });
+    });
+
+    observer.observe(document.body, { attributes: true });
 }
 
 // ============================================

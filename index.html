@@ -57,28 +57,41 @@
             </div>
 
             <ul class="nav-links nav-menu" id="navLinks">
-                <li><a href="greens.html#purchase">Shop</a></li>
-                <li><a href="#product-highlight">Formula</a></li>
-                <li><a href="#cta">Ritual</a></li>
-                <li><a href="about.html#journal">Journal</a></li>
+                <li><a href="greens.html">Grounded</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
 
-            <div class="nav-actions">
-                <button class="nav-icon-btn" aria-label="Search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-                <button class="nav-icon-btn" aria-label="Shopping bag">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                </button>
-            </div>
-
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </nav>
     </header>
+
+    <!-- Full-Screen Mobile Menu -->
+    <nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-inner">
+            <ul class="mobile-menu-list">
+                <li style="--i:1"><a href="greens.html">Grounded</a></li>
+                <li style="--i:2"><a href="about.html">About</a></li>
+                <li style="--i:3"><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="mobile-menu-footer">
+                <a href="greens.html#purchase" class="mobile-menu-cta">
+                    Reserve Lot 08
+                    <span class="btn-icon" aria-hidden="true">→</span>
+                </a>
+                <p class="mobile-menu-price">$49.99 CAD • 30-day supply</p>
+                <div class="mobile-menu-contact">
+                    <a href="tel:+17053942434">(705) 394‑2434</a>
+                    <span>•</span>
+                    <a href="mailto:muskokabalance@gmail.com">Email</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero" data-scroll-section>
@@ -255,7 +268,7 @@
             <div class="provenance-card" data-aos="fade-up" data-aos-delay="150">
                 <div>
                     <p class="provenance-note-label">Latest certificate</p>
-                    <p class="provenance-note">Lot 07 · Cleared May 2025 · SGS Laboratories, Toronto</p>
+                    <p class="provenance-note">Lot 07 · Cleared November 2025 · SGS Laboratories, Toronto</p>
                 </div>
                 <a href="greens.html#testing" class="link-arrow">View full report <span aria-hidden="true">→</span></a>
             </div>
