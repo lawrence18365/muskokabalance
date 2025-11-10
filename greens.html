@@ -1,0 +1,612 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Grounded - Premium organic greens powder by Muskoka Balance. 100% organic, nutrient-rich superfood blend to support your daily wellness. $49.99 for 30 servings.">
+    <meta name="keywords" content="grounded, greens powder, organic superfood, wellness supplement, Muskoka Balance, nutrition">
+    <meta name="author" content="Kali Smith, Muskoka Balance">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Grounded | Premium Organic Greens Powder">
+    <meta property="og:description" content="Your daily dose of vitality. 100% organic greens powder with premium superfoods">
+    <meta property="og:type" content="product">
+
+    <title>Grounded | Premium Greens Powder | Muskoka Balance</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Source+Sans+3:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'><?</text></svg>">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <img src="logo.png" alt="Muskoka Balance" class="preloader-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="preloader-text" style="display: none;">
+                <h1 style="font-family: var(--font-primary); color: #C8A450; font-size: clamp(3rem, 8vw, 6rem); margin: 0; letter-spacing: 0.02em;">Muskoka Balance</h1>
+                <p style="font-family: var(--font-primary); color: #C8A450; font-size: clamp(1rem, 2vw, 1.5rem); margin-top: 1rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.8;">Pure. Grounded. Naturally you.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header id="header">
+        <nav class="site-nav">
+            <div class="nav-left">
+                <a href="index.html" class="logo">Muskoka Balance</a>
+            </div>
+
+            <ul class="nav-links nav-menu" id="navLinks">
+                <li><a href="greens.html#purchase" class="active">Shop</a></li>
+                <li><a href="index.html#product-highlight">Formula</a></li>
+                <li><a href="index.html#cta">Ritual</a></li>
+                <li><a href="about.html#journal">Journal</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="nav-icon-btn" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button class="nav-icon-btn" aria-label="Shopping bag">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Product Hero Section -->
+    <section class="product-hero">
+        <div class="section-container">
+            <div class="product-showcase">
+                <div class="product-image fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&h=1000&fit=crop"
+                         alt="Grounded organic greens powder by Muskoka Balance">
+                </div>
+
+                <div class="product-details fade-in-up fade-in-delay-1">
+                    <p class="section-subtitle">Premium Organic Greens</p>
+                    <h1 class="product-name">Grounded</h1>
+                    <p class="product-tagline">Your daily dose of vitality</p>
+
+                    <p class="product-description">
+                        Grounded is a carefully crafted blend of premium organic superfoods designed to nourish
+                        your body from the inside out. Each serving delivers a powerful combination of nutrient-dense
+                        greens, antioxidants, and phytonutrients to support your overall health and wellbeing.
+                    </p>
+
+                    <ul class="product-benefits">
+                        <li>Boosts natural energy without caffeine crashes</li>
+                        <li>Supports healthy immune function</li>
+                        <li>Promotes digestive health and regularity</li>
+                        <li>Rich in vitamins A, C, K, and essential minerals</li>
+                        <li>Alkalizes and detoxifies naturally</li>
+                        <li>100% organic, vegan, and non-GMO</li>
+                        <li>No artificial colors, flavors, or preservatives</li>
+                        <li>Sustainably sourced and eco-friendly packaging</li>
+                    </ul>
+
+                    <div class="product-price">
+                        $49.99 <span>/ 30 servings</span>
+                    </div>
+
+                    <a href="#purchase" class="btn btn-primary" style="width: 100%; text-align: center; margin-bottom: 1rem;">Purchase Now</a>
+                    <p class="small-text text-center">
+                        Free shipping on orders over $75 | 30-day satisfaction guarantee
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredients Section -->
+    <section class="ingredients-section">
+        <div class="section-container">
+            <div class="section-header fade-in-up">
+                <p class="section-subtitle">What's Inside</p>
+                <h2 class="section-title">Premium Organic Ingredients</h2>
+                <p class="lead-text">
+                    Every ingredient in Grounded has been carefully selected for its exceptional nutritional profile
+                    and scientifically-proven health benefits. We source only the highest quality certified organic superfoods.
+                </p>
+            </div>
+
+            <div class="ingredients-grid-premium">
+                <div class="ingredient-card-premium fade-in-up">
+                    <div class="ingredient-icon-premium">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="ingredient-content">
+                        <h4 class="ingredient-name">Organic Kale</h4>
+                        <p class="ingredient-benefit">
+                            Packed with vitamins K, A, and C. Supports bone health and immune function.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="ingredient-card-premium fade-in-up fade-in-delay-1">
+                    <div class="ingredient-icon-premium">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="ingredient-content">
+                        <h4 class="ingredient-name">Organic Spinach</h4>
+                        <p class="ingredient-benefit">
+                            Rich in iron and folate. Promotes energy production and cell health.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="ingredient-card-premium fade-in-up fade-in-delay-2">
+                    <div class="ingredient-icon-premium">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="ingredient-content">
+                        <h4 class="ingredient-name">Organic Spirulina</h4>
+                        <p class="ingredient-benefit">
+                            Complete plant protein with powerful antioxidants and anti-inflammatory properties.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="ingredient-card-premium fade-in-up">
+                    <div class="ingredient-icon-premium">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <div class="ingredient-content">
+                        <h4 class="ingredient-name">Organic Chlorella</h4>
+                        <p class="ingredient-benefit">
+                            Detoxifying algae that supports immune health and heavy metal removal.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="ingredient-card-premium fade-in-up fade-in-delay-1">
+                    <div class="ingredient-icon-premium">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="ingredient-content">
+                        <h4 class="ingredient-name">Wheatgrass</h4>
+                        <p class="ingredient-benefit">
+                            Alkalizing superfood rich in chlorophyll, vitamins, and minerals.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="ingredient-card-premium fade-in-up fade-in-delay-2">
+                    <div class="ingredient-icon-premium">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="ingredient-content">
+                        <h4 class="ingredient-name">Organic Broccoli</h4>
+                        <p class="ingredient-benefit">
+                            Contains sulforaphane for cellular protection and anti-inflammatory support.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="ingredient-card-premium fade-in-up">
+                    <div class="ingredient-icon-premium">
+                        <i class="fas fa-wheat-awn"></i>
+                    </div>
+                    <div class="ingredient-content">
+                        <h4 class="ingredient-name">Barley Grass</h4>
+                        <p class="ingredient-benefit">
+                            Nutrient-dense grass with enzymes that support digestion and nutrient absorption.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="ingredient-card-premium fade-in-up fade-in-delay-1">
+                    <div class="ingredient-icon-premium">
+                        <i class="fas fa-clover"></i>
+                    </div>
+                    <div class="ingredient-content">
+                        <h4 class="ingredient-name">Alfalfa Leaf</h4>
+                        <p class="ingredient-benefit">
+                            Traditional herb rich in vitamins, minerals, and plant compounds.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Use Section -->
+    <section class="how-to-use">
+        <div class="section-container">
+            <div class="section-header fade-in-up">
+                <p class="section-subtitle">Simple & Effective</p>
+                <h2 class="section-title">How to Use Grounded</h2>
+                <p class="lead-text">
+                    Incorporating Grounded into your daily routine is easy. Here's how to get the most
+                    out of your premium greens powder.
+                </p>
+            </div>
+
+            <div class="usage-steps">
+                <div class="usage-step fade-in-up">
+                    <div class="step-number">1</div>
+                    <h4>Measure</h4>
+                    <p>
+                        Add one scoop (included) of Grounded to 8-12 oz of water, juice, or your
+                        favorite smoothie.
+                    </p>
+                </div>
+
+                <div class="usage-step fade-in-up fade-in-delay-1">
+                    <div class="step-number">2</div>
+                    <h4>Mix</h4>
+                    <p>
+                        Shake or blend until smooth. For best results, use a blender or shaker bottle
+                        to ensure complete mixing.
+                    </p>
+                </div>
+
+                <div class="usage-step fade-in-up fade-in-delay-2">
+                    <div class="step-number">3</div>
+                    <h4>Enjoy</h4>
+                    <p>
+                        Drink immediately and feel the nourishing power of organic greens. Best taken
+                        in the morning or before workouts.
+                    </p>
+                </div>
+            </div>
+
+            <div class="about-intro fade-in-up" style="margin-top: 3rem;">
+                <h3 style="margin-bottom: 1.5rem; color: var(--gold);">Pro Tips</h3>
+                <div style="text-align: left; max-width: 800px; margin: 0 auto;">
+                    <ul class="product-benefits">
+                        <li>Start with half a scoop for the first few days to allow your body to adjust</li>
+                        <li>Mix with pineapple or apple juice for a naturally sweet flavor</li>
+                        <li>Add to your morning smoothie with banana, berries, and almond milk</li>
+                        <li>Take consistently at the same time each day for best results</li>
+                        <li>Store in a cool, dry place away from direct sunlight</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+        <div class="section-container">
+            <div class="section-header fade-in-up">
+                <p class="section-subtitle">Experience the Difference</p>
+                <h2 class="section-title">Real Benefits You Can Feel</h2>
+                <p class="lead-text">
+                    When you make Grounded part of your daily routine, your body responds with measurable improvements.
+                    Here's what our community consistently experiences.
+                </p>
+            </div>
+
+            <div class="benefits-grid-premium">
+                <div class="benefit-card-premium fade-in-up">
+                    <div class="benefit-icon-premium">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4 class="benefit-title">Sustained Energy</h4>
+                        <p class="benefit-description">
+                            Natural, clean energy without the jitters or crashes associated with caffeine.
+                            Feel vibrant and alert throughout your day.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="benefit-card-premium fade-in-up fade-in-delay-1">
+                    <div class="benefit-icon-premium">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4 class="benefit-title">Immune Support</h4>
+                        <p class="benefit-description">
+                            Rich in vitamin C, antioxidants, and phytonutrients that help your body's
+                            natural defense systems stay strong.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="benefit-card-premium fade-in-up fade-in-delay-2">
+                    <div class="benefit-icon-premium">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4 class="benefit-title">Digestive Wellness</h4>
+                        <p class="benefit-description">
+                            Natural enzymes and fiber support healthy digestion, regularity, and gut
+                            microbiome balance.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="benefit-card-premium fade-in-up">
+                    <div class="benefit-icon-premium">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4 class="benefit-title">Radiant Skin</h4>
+                        <p class="benefit-description">
+                            Vitamins A and C, along with powerful antioxidants, nourish your skin from
+                            within for a healthy, natural glow.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="benefit-card-premium fade-in-up fade-in-delay-1">
+                    <div class="benefit-icon-premium">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4 class="benefit-title">Mental Clarity</h4>
+                        <p class="benefit-description">
+                            B vitamins and antioxidants support cognitive function, helping you stay
+                            focused and mentally sharp.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="benefit-card-premium fade-in-up fade-in-delay-2">
+                    <div class="benefit-icon-premium">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4 class="benefit-title">pH Balance</h4>
+                        <p class="benefit-description">
+                            Alkalizing greens help balance your body's pH levels, supporting overall
+                            health and vitality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="bg-cream">
+        <div class="section-container">
+            <div class="section-header fade-in-up">
+                <p class="section-subtitle">Questions & Answers</p>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-section">
+                <div class="faq-item fade-in-up">
+                    <h4 class="faq-question">What does Grounded taste like?</h4>
+                    <p class="faq-answer">
+                        Grounded has a mild, naturally earthy flavor that's pleasant on its own but blends
+                        beautifully with juices, smoothies, and other beverages. Many customers describe it
+                        as fresh and clean-tasting, without the harsh or bitter notes found in some greens powders.
+                    </p>
+                </div>
+
+                <div class="faq-item fade-in-up fade-in-delay-1">
+                    <h4 class="faq-question">Is Grounded safe for everyone?</h4>
+                    <p class="faq-answer">
+                        Grounded is made from 100% organic whole food ingredients and is generally safe for most people.
+                        However, if you're pregnant, nursing, taking medications, or have a medical condition, we
+                        recommend consulting with your healthcare provider before starting any new supplement.
+                    </p>
+                </div>
+
+                <div class="faq-item fade-in-up fade-in-delay-2">
+                    <h4 class="faq-question">How quickly will I see results?</h4>
+                    <p class="faq-answer">
+                        Many people report feeling more energized within the first few days of taking Grounded.
+                        For more significant benefits like improved digestion, better skin, and enhanced overall
+                        wellness, we recommend consistent daily use for at least 30 days.
+                    </p>
+                </div>
+
+                <div class="faq-item fade-in-up">
+                    <h4 class="faq-question">What certifications does Grounded have?</h4>
+                    <p class="faq-answer">
+                        All ingredients in Grounded are certified organic and non-GMO. We work exclusively with
+                        suppliers who meet rigorous quality standards, and every batch is third-party tested for
+                        purity and potency.
+                    </p>
+                </div>
+
+                <div class="faq-item fade-in-up fade-in-delay-1">
+                    <h4 class="faq-question">Can I take Grounded if I have dietary restrictions?</h4>
+                    <p class="faq-answer">
+                        Yes! Grounded is 100% plant-based, making it suitable for vegans and vegetarians. It's also
+                        gluten-free, dairy-free, soy-free, and contains no common allergens. All ingredients are
+                        clearly listed on the label.
+                    </p>
+                </div>
+
+                <div class="faq-item fade-in-up fade-in-delay-2">
+                    <h4 class="faq-question">What's your return policy?</h4>
+                    <p class="faq-answer">
+                        We stand behind the quality of Grounded with a 30-day satisfaction guarantee. If you're not
+                        completely satisfied with your purchase, contact us within 30 days for a full refundno
+                        questions asked.
+                    </p>
+                </div>
+
+                <div class="faq-item fade-in-up">
+                    <h4 class="faq-question">How should I store Grounded?</h4>
+                    <p class="faq-answer">
+                        Store your Grounded powder in a cool, dry place away from direct sunlight. Keep the container
+                        tightly sealed to maintain freshness. When stored properly, Grounded will maintain its potency
+                        for up to 12 months from the manufacture date.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Purchase Section -->
+    <section id="purchase">
+        <div class="section-container">
+            <div class="section-header fade-in-up">
+                <p class="section-subtitle">Start Your Journey</p>
+                <h2 class="section-title">Purchase Grounded</h2>
+                <p class="lead-text">
+                    Ready to experience the difference? Get your first container of Grounded today
+                    and take the first step toward a more balanced, vibrant you.
+                </p>
+            </div>
+
+            <div class="product-showcase" style="margin-top: 3rem;">
+                <div class="product-image fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1556910110-a6a960e3c3f3?w=800&h=1000&fit=crop"
+                         alt="Purchase Grounded greens powder">
+                </div>
+
+                <div class="product-details fade-in-up fade-in-delay-1">
+                    <h3 class="product-name" style="font-size: 2.5rem;">Grounded</h3>
+                    <p class="product-tagline">30-Day Supply</p>
+
+                    <div style="background: var(--off-white); padding: 2rem; margin: 2rem 0; border-left: 4px solid var(--gold);">
+                        <div class="product-price" style="margin-bottom: 1rem;">
+                            $49.99
+                        </div>
+
+                        <ul class="product-benefits" style="margin-bottom: 0;">
+                            <li>30 servings per container</li>
+                            <li>100% certified organic ingredients</li>
+                            <li>Free shipping on orders $75+</li>
+                            <li>30-day satisfaction guarantee</li>
+                            <li>Eco-friendly, recyclable packaging</li>
+                        </ul>
+                    </div>
+
+                    <div class="hero-cta" style="flex-direction: column; gap: 1rem;">
+                        <a href="mailto:muskokabalance@gmail.com?subject=Grounded%20Purchase%20Inquiry"
+                           class="btn btn-primary"
+                           style="width: 100%; text-align: center;">
+                            Order Now via Email
+                        </a>
+                        <a href="tel:+17053942434"
+                           class="btn btn-secondary"
+                           style="width: 100%; text-align: center;">
+                            Call to Order: (705) 394-2434
+                        </a>
+                    </div>
+
+                    <p class="small-text" style="margin-top: 1.5rem; text-align: center;">
+                        Secure checkout | Ships within 2-3 business days | Made fresh in Muskoka, Ontario
+                    </p>
+
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(201, 169, 97, 0.2);">
+                        <h4 style="margin-bottom: 1rem; color: var(--gold);">Questions about ordering?</h4>
+                        <p style="margin-bottom: 1rem;">
+                            Our team is here to help! Reach out via email or phone, and we'll be happy to
+                            assist you with your order or answer any questions you may have.
+                        </p>
+                        <a href="index.html#contact" style="color: var(--gold); text-decoration: underline;">
+                            Visit our contact page
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Testimonials -->
+    <section id="testimonials" class="bg-cream">
+        <div class="section-container">
+            <div class="section-header fade-in-up">
+                <p class="section-subtitle">Customer Love</p>
+                <h2 class="section-title">What People Are Saying</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in-up">
+                    <p class="feature-description" style="font-style: italic; margin-bottom: 1.5rem; font-size: 1.0625rem;">
+                        "I've been using Grounded for three months now, and the difference in my energy levels
+                        is incredible. I wake up feeling refreshed and stay energized all day without any caffeine!"
+                    </p>
+                    <h4 class="feature-title" style="font-size: 1rem; color: var(--gold);"> Sarah M.</h4>
+                    <p class="small-text">Toronto, ON</p>
+                </div>
+
+                <div class="feature-card fade-in-up fade-in-delay-1">
+                    <p class="feature-description" style="font-style: italic; margin-bottom: 1.5rem; font-size: 1.0625rem;">
+                        "As someone with digestive issues, Grounded has been a game-changer. My gut health has
+                        improved dramatically, and I love that it's all-natural and organic."
+                    </p>
+                    <h4 class="feature-title" style="font-size: 1rem; color: var(--gold);"> Michael R.</h4>
+                    <p class="small-text">Gravenhurst, ON</p>
+                </div>
+
+                <div class="feature-card fade-in-up fade-in-delay-2">
+                    <p class="feature-description" style="font-style: italic; margin-bottom: 1.5rem; font-size: 1.0625rem;">
+                        "I love supporting local Muskoka businesses, and Muskoka Balance delivers exceptional quality.
+                        Grounded is now a non-negotiable part of my morning routine!"
+                    </p>
+                    <h4 class="feature-title" style="font-size: 1rem; color: var(--gold);"> Emily K.</h4>
+                    <p class="small-text">Bracebridge, ON</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Muskoka Balance</h3>
+                    <p>
+                        Pure. Grounded. Naturally you.
+                    </p>
+                    <p>
+                        Premium organic greens powder crafted with care in beautiful Muskoka, Ontario.
+                        Committed to your health, our community, and our planet.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="greens.html">Greens</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://instagram.com/muskokabalance" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                        <li><a href="mailto:muskokabalance@gmail.com">Email Us</a></li>
+                        <li><a href="tel:+17053942434">Call Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Muskoka Balance. All rights reserved. | Handcrafted in Muskoka, Ontario</p>
+                <p style="margin-top: 0.5rem;">
+                    This product is a food supplement and is not intended to diagnose, treat, cure, or prevent any disease.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
