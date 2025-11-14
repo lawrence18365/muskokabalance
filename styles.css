@@ -1598,8 +1598,8 @@ section {
     position: absolute;
     inset: 0;
     background: url('backgroundwood.jpeg') center/cover no-repeat;
-    opacity: 0.12;
-    mix-blend-mode: soft-light;
+    opacity: 0.25;
+    mix-blend-mode: multiply;
     pointer-events: none;
 }
 
