@@ -22,6 +22,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- AOS animations -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" crossorigin="anonymous">
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 
@@ -31,11 +34,16 @@
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <div class="preloader-content">
-            <img src="logo.png" alt="Muskoka Balance" class="preloader-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="preloader-text" style="display: none;">
-                <h1 style="font-family: var(--font-primary); color: #C8A450; font-size: clamp(3rem, 8vw, 6rem); margin: 0; letter-spacing: 0.02em;">Muskoka Balance</h1>
-                <p style="font-family: var(--font-primary); color: #C8A450; font-size: clamp(1rem, 2vw, 1.5rem); margin-top: 1rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.8;">Pure. Grounded. Naturally you.</p>
+        <div class="preloader-shell">
+            <div class="preloader-orbit">
+                <div class="orbit-ring"></div>
+                <div class="orbit-ring orbit-ring--inner"></div>
+                <span class="orbit-letter">MB</span>
+                <span class="orbit-dot"></span>
+            </div>
+            <div class="preloader-caption">
+                <p class="preloader-title">Muskoka Balance</p>
+                <p class="preloader-note">Grounded greens · Lot 08 · Preparing dispatch</p>
             </div>
         </div>
     </div>
@@ -48,22 +56,11 @@
             </div>
 
             <ul class="nav-links nav-menu" id="navLinks">
-                <li><a href="greens.html#purchase">Shop</a></li>
-                <li><a href="index.html#product-highlight">Formula</a></li>
-                <li><a href="index.html#cta">Ritual</a></li>
-                <li><a href="#journal" class="active">Journal</a></li>
+                <li><a href="greens.html">Grounded</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
 
-            <div class="nav-actions">
-                <button class="nav-icon-btn" aria-label="Search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-                <button class="nav-icon-btn" aria-label="Shopping bag">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                </button>
-            </div>
-
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -71,279 +68,236 @@
         </nav>
     </header>
 
+    <!-- Full-Screen Mobile Menu -->
+    <nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-inner">
+            <ul class="mobile-menu-list">
+                <li style="--i:1"><a href="greens.html">Grounded</a></li>
+                <li style="--i:2"><a href="about.html">About</a></li>
+                <li style="--i:3"><a href="index.html#contact">Contact</a></li>
+            </ul>
+
+            <div class="mobile-menu-footer">
+                <a href="greens.html#purchase" class="mobile-menu-cta">
+                    Reserve Lot 08
+                    <span class="btn-icon" aria-hidden="true">→</span>
+                </a>
+                <p class="mobile-menu-price">$49.99 CAD • 30-day supply</p>
+                <div class="mobile-menu-contact">
+                    <a href="tel:+17053942434">(705) 394‑2434</a>
+                    <span>•</span>
+                    <a href="mailto:muskokabalance@gmail.com">Email</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
-    <section class="hero" style="min-height: 60vh;">
-        <div class="hero-content" style="grid-template-columns: 1fr;">
-            <div class="hero-text text-center fade-in-up" style="max-width: 800px; margin: 0 auto;">
-                <p class="hero-tagline">Our Story</p>
-                <h1 class="hero-title">Rooted in Wellness, Grown in Muskoka</h1>
+    <section class="hero hero--page hero--about hero--greens">
+        <div class="hero-content">
+            <div class="hero-text fade-in-up">
+                <h1 class="hero-title">About Muskoka Balance</h1>
                 <p class="hero-description">
-                    Muskoka Balance was born from a passion for natural wellness and a commitment
-                    to helping others discover the transformative power of whole-food nutrition.
+                    Organic greens, milled in Bracebridge
                 </p>
             </div>
         </div>
     </section>
+
 
     <!-- Founder Section -->
-    <div id="journal"></div>
-    <section id="founder">
+    <section id="founder" class="page-section about-founder">
         <div class="section-container">
-            <div class="founder-section">
-                <div class="founder-image fade-in-up">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=1000&fit=crop"
-                         alt="Kali Smith, Founder of Muskoka Balance">
+            <div class="founder-grid">
+                <div class="founder-intro fade-in-up">
+                    <p class="section-subtitle">About / Founder</p>
+                    <h2 class="section-title">Kali Smith</h2>
+                    <p class="lead-text">Herbalist, sports nutritionist, and Muskoka local.</p>
+
+                    <div class="founder-copy">
+                        <p>
+                            I am Kali Smith, owner, clinical nutritionist, and perennial note-taker behind Muskoka Balance.
+                            Years spent guiding elite athletes and postpartum clients taught me that people crave focused protocols,
+                            not commodity greens. Our studio in Bracebridge keeps me close to the growers, the weather, and the
+                            cedar-lined trails that inform every blend.
+                        </p>
+                        <p>
+                            Grounded is treated like a culinary project: botanicals are shade-dried, milled in cold drums,
+                            rested to stabilize volatiles, and dosed to clinical standards before a jar leaves the studio.
+                            I sign off on every lot and log sourcing, assays, and sensory notes in the same ledger my grandmother
+                            used for preserves.
+                        </p>
+                        <p>
+                            Rituals matter more than marketing. I spend as much time designing daily scripts, onboarding families,
+                            and briefing practitioners as I do filling canisters. If you need dosing guidance or travel sachets,
+                            you reach me—not a call center.
+                        </p>
+                    </div>
+
+                    <div class="founder-meta">
+                        <div class="signature-block">Kali Smith</div>
+                        <p class="small-text">Owner, Formulator, Clinical Nutritionist</p>
+                    </div>
                 </div>
 
-                <div class="founder-content fade-in-up fade-in-delay-1">
-                    <p class="section-subtitle">Meet the Founder</p>
-                    <h2>Kali Smith</h2>
-                    <p>
-                        Growing up in the natural beauty of Muskoka, Ontario, I've always been deeply connected
-                        to the land and its healing properties. My journey into holistic wellness began with a
-                        simple realization: our bodies thrive when we nourish them with what nature provides.
-                    </p>
-                    <p>
-                        After years of studying nutrition and experiencing firsthand the profound impact of
-                        whole-food supplements, I knew I had to create something special. Something that would
-                        bring the power of premium organic greens to my community and beyond.
-                    </p>
-                    <p>
-                        Muskoka Balance is the culmination of this visiona brand dedicated to providing
-                        the highest quality greens powder while honoring the values of sustainability,
-                        transparency, and genuine care for every customer's wellness journey.
-                    </p>
-                    <p>
-                        Whether you're a local resident, a cottager enjoying our beautiful lakes, or someone
-                        seeking a healthier lifestyle, I invite you to join our community and experience the
-                        difference that pure, grounded nutrition can make.
-                    </p>
-                    <p style="font-family: var(--font-primary); font-size: 1.5rem; color: var(--gold); margin-top: 2rem;">
-                         Kali Smith
-                    </p>
-                </div>
+                <article class="founder-card fade-in-up fade-in-delay-1">
+                    <div class="founder-card-frame">
+                        <div class="founder-card-media">
+                            <img src="owner_of_muskoka_balance.jpg"
+                                 alt="Kali Smith, owner of Muskoka Balance"
+                                 loading="lazy">
+                        </div>
+                        <div class="founder-card-accent"></div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Mission Section -->
-    <section id="mission" class="bg-cream">
+    <!-- Visit / Contact Section -->
+    <section class="page-section visit-section">
         <div class="section-container">
-            <div class="section-header fade-in-up">
-                <p class="section-subtitle">Our Mission</p>
-                <h2 class="section-title">Why We Do What We Do</h2>
-            </div>
-
-            <div class="about-intro fade-in-up" style="margin-top: 3rem;">
-                <p style="font-size: 1.25rem; color: var(--text-secondary); line-height: 1.9;">
-                    At Muskoka Balance, our mission is simple yet profound: to provide premium organic
-                    wellness products that empower individuals to take control of their health naturally.
-                    We believe that when you feel grounded in your body, you can live more fully,
-                    love more deeply, and contribute more meaningfully to the world around you.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Values Section -->
-    <section id="values">
-        <div class="section-container">
-            <div class="section-header fade-in-up">
-                <p class="section-subtitle">Our Values</p>
-                <h2 class="section-title">What We Stand For</h2>
-                <p class="lead-text">
-                    Our values guide every decision we make, from sourcing ingredients to
-                    connecting with our community.
-                </p>
-            </div>
-
-            <div class="values-grid">
-                <div class="value-card fade-in-up">
-                    <h4>Purity</h4>
-                    <p>
-                        We never compromise on quality. Every ingredient is carefully selected,
-                        certified organic, and free from artificial additives, fillers, or preservatives.
-                        What you see on the label is exactly what you getpure, wholesome nutrition.
+            <div class="visit-grid">
+                <div class="visit-copy fade-in-up">
+                    <p class="section-subtitle">Visit the Studio</p>
+                    <h2 class="section-title">Bracebridge appointments, by design</h2>
+                    <p class="lead-text">
+                        The studio keeps Grounded close to the cedar forest and the cold drums. Tastings,
+                        practitioner briefings, and ritual tuning sessions are hosted quietly mid-week so each
+                        visit gets handwritten attention.
                     </p>
+                    <div class="visit-details">
+                        <p>Lot 08 is being milled now. Guests are limited to two parties per afternoon; every booking
+                            includes a sensory profile, dose planning, and takeaway sachets for the lake.</p>
+                        <p>Need a remote consult? I reply personally within 24 hours and can ship anywhere in Canada
+                            or the U.S.</p>
+                    </div>
                 </div>
 
-                <div class="value-card fade-in-up fade-in-delay-1">
-                    <h4>Transparency</h4>
-                    <p>
-                        Honesty and openness are at the heart of everything we do. We're committed
-                        to full transparency about our sourcing, our processes, and our products.
-                        You deserve to know exactly what you're putting in your body.
-                    </p>
-                </div>
+                <aside class="visit-card fade-in-up fade-in-delay-1">
+                    <div class="visit-card-header">
+                        <p class="visit-card-eyebrow">Studio Dispatch</p>
+                        <h3>9 Crescent Road</h3>
+                        <p class="visit-card-note">Bracebridge, Ontario</p>
+                    </div>
 
-                <div class="value-card fade-in-up fade-in-delay-2">
-                    <h4>Sustainability</h4>
-                    <p>
-                        Protecting our planet is non-negotiable. We partner with suppliers who
-                        practice sustainable farming, use eco-friendly packaging, and share our
-                        commitment to leaving the earth better than we found it.
-                    </p>
-                </div>
+                    <ul class="visit-card-list">
+                        <li>
+                            <span>Hours</span>
+                            <p>Wed—Sat · By appointment only</p>
+                        </li>
+                        <li>
+                            <span>Phone</span>
+                            <p><a href="tel:+17053942434">(705) 394‑2434</a></p>
+                        </li>
+                        <li>
+                            <span>Email</span>
+                            <p><a href="mailto:muskokabalance@gmail.com">muskokabalance@gmail.com</a></p>
+                        </li>
+                    </ul>
 
-                <div class="value-card fade-in-up">
-                    <h4>Community</h4>
-                    <p>
-                        We believe in the power of community. Whether supporting local farmers,
-                        giving back to Muskoka, or building lasting relationships with our customers,
-                        we're committed to lifting each other up.
-                    </p>
-                </div>
-
-                <div class="value-card fade-in-up fade-in-delay-1">
-                    <h4>Excellence</h4>
-                    <p>
-                        Good isn't good enough. We hold ourselves to the highest standards in
-                        every aspect of our businessfrom product formulation to customer service.
-                        Your wellness journey deserves nothing less than excellence.
-                    </p>
-                </div>
-
-                <div class="value-card fade-in-up fade-in-delay-2">
-                    <h4>Empowerment</h4>
-                    <p>
-                        True wellness comes from within. We're here to provide the tools and support
-                        you need to take charge of your health, make informed decisions, and create
-                        lasting positive change in your life.
-                    </p>
-                </div>
+                    <div class="visit-card-actions">
+                        <a class="btn btn-primary" href="mailto:muskokabalance@gmail.com?subject=Studio%20Appointment%20Request">
+                            Reserve an appointment
+                        </a>
+                        <div class="visit-card-links">
+                            <a href="tel:+17053942434">Call studio</a>
+                            <a href="https://maps.apple.com/?address=9%20Crescent%20Rd,%20Bracebridge,%20ON,%20Canada" target="_blank" rel="noopener noreferrer">
+                                Open in Maps
+                                <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </div>
     </section>
-
-    <!-- Why Muskoka Section -->
-    <section id="muskoka" class="bg-cream">
-        <div class="section-container">
-            <div class="section-header fade-in-up">
-                <p class="section-subtitle">Our Home</p>
-                <h2 class="section-title">Why Muskoka?</h2>
-            </div>
-
-            <div class="founder-section" style="margin-top: 3rem;">
-                <div class="founder-content fade-in-up">
-                    <h3>The Heart of Ontario's Cottage Country</h3>
-                    <p>
-                        Muskoka is more than just a locationit's an integral part of who we are.
-                        Known for its pristine lakes, towering pines, and breathtaking natural beauty,
-                        this region embodies the balance and harmony we strive to bring to your life.
-                    </p>
-                    <p>
-                        The clean air, pure water, and untouched wilderness of Muskoka remind us daily
-                        of what really matters: connection to nature, mindful living, and taking time
-                        to care for ourselves and each other.
-                    </p>
-                    <p>
-                        By crafting our products here, we're able to infuse that same sense of peace,
-                        purity, and grounding into every batch of Grounded. When you choose Muskoka Balance,
-                        you're bringing a piece of this special place into your daily wellness ritual.
-                    </p>
-                </div>
-
-                <div class="founder-image fade-in-up fade-in-delay-1">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=1000&fit=crop"
-                         alt="Beautiful Muskoka landscape">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Future Vision Section -->
-    <section id="vision">
-        <div class="section-container">
-            <div class="section-header fade-in-up">
-                <p class="section-subtitle">Looking Forward</p>
-                <h2 class="section-title">Our Vision for the Future</h2>
-            </div>
-
-            <div class="about-intro fade-in-up" style="margin-top: 3rem;">
-                <p style="font-size: 1.25rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem;">
-                    While Grounded is our signature product today, it's just the beginning. We envision
-                    Muskoka Balance growing into a comprehensive wellness brand, offering holistic health
-                    solutions that address the complete spectrum of your wellbeing.
-                </p>
-                <p style="font-size: 1.25rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem;">
-                    In the near future, we plan to expand our services to include personalized nutrition
-                    consultations, wellness coaching, and a curated selection of complementary productsall
-                    aligned with our commitment to natural, sustainable health.
-                </p>
-                <p style="font-size: 1.25rem; color: var(--text-secondary); line-height: 1.9;">
-                    We're also dedicated to expanding our reach across Canada, bringing the Muskoka Balance
-                    approach to wellness to communities nationwide, while always staying true to our roots
-                    and our values.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="cta" class="bg-cream">
-        <div class="section-container text-center">
-            <div class="fade-in-up" style="max-width: 700px; margin: 0 auto;">
-                <p class="section-subtitle">Join Our Community</p>
-                <h2 class="section-title">Be Part of Our Story</h2>
-                <p class="lead-text" style="margin-bottom: 2rem;">
-                    We're building a community of wellness-minded individuals who believe in the
-                    power of natural nutrition. Join us on this journey.
-                </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="greens.html" class="btn btn-primary">Try Grounded</a>
-                    <a href="index.html#contact" class="btn btn-secondary">Get in Touch</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-grid">
+    <footer class="site-footer" data-scroll-section>
+        <div class="footer-shell">
+            <div class="footer-top">
                 <div class="footer-brand">
-                    <h3>Muskoka Balance</h3>
-                    <p>
-                        Pure. Grounded. Naturally you.
+                    <p class="footer-eyebrow">Muskoka Balance</p>
+                    <p class="footer-tagline">
+                        Organic greens milled in Bracebridge, Ontario. Small lots, cold drums, handwritten ledgers.
                     </p>
-                    <p>
-                        Premium organic greens powder crafted with care in beautiful Muskoka, Ontario.
-                        Committed to your health, our community, and our planet.
-                    </p>
+                    <a href="greens.html#purchase" class="footer-cta">
+                        Reserve Lot 08
+                        <span aria-hidden="true">→</span>
+                    </a>
+                    <p class="footer-meta">Lot 08 in allocation · Ships Canada + U.S.</p>
                 </div>
 
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
+                <div class="footer-nav">
+                    <p class="footer-heading">Index</p>
+                    <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="greens.html">Greens</a></li>
+                        <li><a href="greens.html">Grounded</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="terms.html">Terms</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-links">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="https://instagram.com/muskokabalance" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                        <li><a href="mailto:muskokabalance@gmail.com">Email Us</a></li>
-                        <li><a href="tel:+17053942434">Call Us</a></li>
-                    </ul>
+                <div class="footer-contact">
+                    <p class="footer-heading">Dispatch</p>
+                    <p class="footer-copy">Release notes, grower interviews, and clinical findings shared quietly each season.</p>
+                    <div class="footer-contact-links">
+                        <a href="https://instagram.com/muskokabalance" class="link-arrow" target="_blank" rel="noopener noreferrer">
+                            Instagram dispatches <span aria-hidden="true">→</span>
+                        </a>
+                        <a href="mailto:muskokabalance@gmail.com" class="link-arrow muted">
+                            Write to Kali <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-ledger">
+                <div class="ledger-item">
+                    <span class="ledger-label">Studio</span>
+                    <p class="ledger-value">9 Crescent Road</p>
+                    <p class="ledger-note">Bracebridge, Ontario</p>
+                </div>
+                <div class="ledger-item">
+                    <span class="ledger-label">Hours</span>
+                    <p class="ledger-value">Wed—Sat</p>
+                    <p class="ledger-note">By appointment only</p>
+                </div>
+                <div class="ledger-item">
+                    <span class="ledger-label">Phone</span>
+                    <p class="ledger-value"><a href="tel:+17053942434">(705) 394‑2434</a></p>
+                    <p class="ledger-note">Human replies 9am–5pm EST</p>
+                </div>
+                <div class="ledger-item">
+                    <span class="ledger-label">Email</span>
+                    <p class="ledger-value"><a href="mailto:muskokabalance@gmail.com">muskokabalance@gmail.com</a></p>
+                    <p class="ledger-note">Responses within 24 hours</p>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 Muskoka Balance. All rights reserved. | Handcrafted in Muskoka, Ontario</p>
-                <p style="margin-top: 0.5rem;">
-                    This product is a food supplement and is not intended to diagnose, treat, cure, or prevent any disease.
-                </p>
+                <p>&copy; 2025 Muskoka Balance. Crafted in Muskoka, Ontario.</p>
+                <p>This food supplement is not intended to diagnose, treat, cure, or prevent any disease.</p>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript -->
+    <!-- Interaction helpers -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.6/bundled/lenis.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js" crossorigin="anonymous"></script>
+
+    <!-- Load GSAP and plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/dist/index.min.js"></script>
+
+    <!-- Then load site scripts -->
     <script src="script.js"></script>
+    <script src="animations.js"></script>
 </body>
 </html>

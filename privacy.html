@@ -20,21 +20,13 @@
             <div class="nav-left">
                 <a href="index.html" class="logo">Muskoka Balance</a>
             </div>
+
             <ul class="nav-links nav-menu" id="navLinks">
-                <li><a href="greens.html#purchase">Shop</a></li>
-                <li><a href="index.html#product-highlight">Formula</a></li>
-                <li><a href="index.html#cta">Ritual</a></li>
-                <li><a href="about.html#journal">Journal</a></li>
+                <li><a href="greens.html">Grounded</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
-            <div class="nav-actions">
-                <button class="nav-icon-btn" aria-label="Search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-                <button class="nav-icon-btn" aria-label="Shopping bag">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                </button>
-            </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -42,7 +34,31 @@
         </nav>
     </header>
 
-    <section class="hero policy-hero">
+    <!-- Full-Screen Mobile Menu -->
+    <nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-inner">
+            <ul class="mobile-menu-list">
+                <li style="--i:1"><a href="greens.html">Grounded</a></li>
+                <li style="--i:2"><a href="about.html">About</a></li>
+                <li style="--i:3"><a href="index.html#contact">Contact</a></li>
+            </ul>
+
+            <div class="mobile-menu-footer">
+                <a href="greens.html#purchase" class="mobile-menu-cta">
+                    Reserve Lot 08
+                    <span class="btn-icon" aria-hidden="true">→</span>
+                </a>
+                <p class="mobile-menu-price">$49.99 CAD • 30-day supply</p>
+                <div class="mobile-menu-contact">
+                    <a href="tel:+17053942434">(705) 394‑2434</a>
+                    <span>•</span>
+                    <a href="mailto:muskokabalance@gmail.com">Email</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero hero--page hero--policy hero--alt policy-hero">
         <div class="hero-content">
             <div class="hero-text">
                 <p class="hero-tagline">Privacy Policy</p>
@@ -116,53 +132,79 @@
                     <a href="tel:+17053942434">(705) 394-2434</a><br>
                     <a href="mailto:muskokabalance@gmail.com">muskokabalance@gmail.com</a>
                 </p>
-                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem;">Effective date: January 1, 2025</p>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem;">Effective date: November 10, 2025</p>
             </div>
         </section>
     </main>
 
     <footer class="site-footer" data-scroll-section>
-        <div class="footer-inner">
-            <div class="footer-column">
-                <p class="footer-label">Muskoka Balance</p>
-                <p class="footer-copy">
-                    Organic greens milled in Muskoka, Ontario. Small lots, slow milling, handwritten ledgers.
-                </p>
-                <p class="footer-copy">
-                    Studio visits by appointment · 9 Crescent Road, Bracebridge
-                </p>
-            </div>
-
-            <div class="footer-column">
-                <p class="footer-label">Pages</p>
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="greens.html">Formula</a></li>
-                    <li><a href="about.html">Journal</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms &amp; Conditions</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <p class="footer-label">Contact</p>
-                <p class="footer-copy">
-                    <a href="tel:+17053942434">(705) 394‑2434</a><br>
-                    <a href="mailto:muskokabalance@gmail.com">muskokabalance@gmail.com</a>
-                </p>
-                <p class="footer-copy">
-                    Instagram dispatches:
-                    <a href="https://instagram.com/muskokabalance" target="_blank" rel="noopener noreferrer">
-                        @muskokabalance
+        <div class="footer-shell">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <p class="footer-eyebrow">Muskoka Balance</p>
+                    <p class="footer-tagline">
+                        Organic greens milled in Bracebridge, Ontario. Small lots, cold drums, handwritten ledgers.
+                    </p>
+                    <a href="greens.html#purchase" class="footer-cta">
+                        Reserve Lot 08
+                        <span aria-hidden="true">→</span>
                     </a>
-                </p>
-            </div>
-        </div>
+                    <p class="footer-meta">Lot 08 in allocation · Ships Canada + U.S.</p>
+                </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2025 Muskoka Balance. Crafted in Muskoka, Ontario.</p>
-            <p>This food supplement is not intended to diagnose, treat, cure, or prevent any disease.</p>
+                <div class="footer-nav">
+                    <p class="footer-heading">Index</p>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="greens.html">Grounded</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="terms.html">Terms</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <p class="footer-heading">Dispatch</p>
+                    <p class="footer-copy">Release notes, grower interviews, and clinical findings shared quietly each season.</p>
+                    <div class="footer-contact-links">
+                        <a href="https://instagram.com/muskokabalance" class="link-arrow" target="_blank" rel="noopener noreferrer">
+                            Instagram dispatches <span aria-hidden="true">→</span>
+                        </a>
+                        <a href="mailto:muskokabalance@gmail.com" class="link-arrow muted">
+                            Write to Kali <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-ledger">
+                <div class="ledger-item">
+                    <span class="ledger-label">Studio</span>
+                    <p class="ledger-value">9 Crescent Road</p>
+                    <p class="ledger-note">Bracebridge, Ontario</p>
+                </div>
+                <div class="ledger-item">
+                    <span class="ledger-label">Hours</span>
+                    <p class="ledger-value">Wed—Sat</p>
+                    <p class="ledger-note">By appointment only</p>
+                </div>
+                <div class="ledger-item">
+                    <span class="ledger-label">Phone</span>
+                    <p class="ledger-value"><a href="tel:+17053942434">(705) 394‑2434</a></p>
+                    <p class="ledger-note">Human replies 9am–5pm EST</p>
+                </div>
+                <div class="ledger-item">
+                    <span class="ledger-label">Email</span>
+                    <p class="ledger-value"><a href="mailto:muskokabalance@gmail.com">muskokabalance@gmail.com</a></p>
+                    <p class="ledger-note">Responses within 24 hours</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Muskoka Balance. Crafted in Muskoka, Ontario.</p>
+                <p>This food supplement is not intended to diagnose, treat, cure, or prevent any disease.</p>
+            </div>
         </div>
     </footer>
 

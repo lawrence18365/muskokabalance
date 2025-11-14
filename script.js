@@ -217,9 +217,10 @@ function initSmoothScroll() {
             e.preventDefault();
             const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
 
+            // Let Lenis handle smooth scrolling
             window.scrollTo({
                 top: targetPosition,
-                behavior: 'smooth'
+                behavior: 'auto' // Changed from 'smooth' - Lenis handles it
             });
         });
     });
@@ -372,20 +373,38 @@ function initHeaderScroll() {
     const header = document.getElementById('header');
     if (!header) return;
 
+    let scrollTimeout;
+
     const handleScroll = () => {
-        const currentScrollY = window.pageYOffset;
+        const currentScrollY = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+
+        // Don't hide header when menu is open
+        if (state.isMenuOpen) {
+            state.lastScrollY = currentScrollY;
+            state.ticking = false;
+            return;
+        }
 
         // Add shadow when scrolled
         header.classList.toggle('scrolled', currentScrollY > 50);
 
-        // Hide header on scroll down, show on scroll up
-        if (currentScrollY > state.lastScrollY && currentScrollY > 100) {
-            header.classList.add('header-hidden');
-        } else if (currentScrollY < state.lastScrollY) {
-            header.classList.remove('header-hidden');
+        // Clear any existing timeout
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
         }
 
-        state.lastScrollY = currentScrollY;
+        // Delay the header hide/show logic slightly to prevent jitter on mobile
+        scrollTimeout = setTimeout(() => {
+            // Hide header on scroll down, show on scroll up
+            if (currentScrollY > state.lastScrollY && currentScrollY > 100) {
+                header.classList.add('header-hidden');
+            } else if (currentScrollY < state.lastScrollY || currentScrollY < 50) {
+                header.classList.remove('header-hidden');
+            }
+
+            state.lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY; // Prevent negative values
+        }, 10); // Small delay to batch scroll events
+
         state.ticking = false;
     };
 
@@ -397,6 +416,9 @@ function initHeaderScroll() {
     };
 
     window.addEventListener('scroll', requestTick, { passive: true });
+
+    // Initialize lastScrollY on load
+    state.lastScrollY = window.pageYOffset || 0;
 }
 
 // ============================================

@@ -47,6 +47,38 @@ function initScrollAnimations() {
     }
 
     // ============================================
+    // LENIS SMOOTH SCROLL SETUP (Community-approved for 60fps)
+    // ============================================
+
+    let lenis;
+    if (typeof Lenis !== 'undefined') {
+        lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
+        // Sync Lenis with GSAP ScrollTrigger (critical for smooth parallax!)
+        lenis.on('scroll', ScrollTrigger.update);
+
+        // Add Lenis to GSAP ticker for perfect frame sync
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+
+        // Disable lag smoothing for consistent performance
+        gsap.ticker.lagSmoothing(0);
+
+        console.log('✅ Lenis smooth scroll initialized - 60fps target');
+    }
+
+    // ============================================
     // 1. HERO SECTION - TEXT REVEAL ANIMATION
     // ============================================
 
@@ -348,7 +380,16 @@ function initScrollAnimations() {
     });
 
     // ============================================
-    // 14. ACCESSIBILITY - PAUSE ANIMATIONS
+    // 14. SIMPLE FIXED PARALLAX (NO CONFLICTS)
+    // ============================================
+
+    // REMOVED - was causing lag and conflicts
+    // Images will stay truly fixed using CSS only
+
+    console.log('✅ Parallax handled by CSS - zero JS conflicts');
+
+    // ============================================
+    // 15. ACCESSIBILITY - PAUSE ANIMATIONS
     // ============================================
 
     // Pause all animations when tab is not visible

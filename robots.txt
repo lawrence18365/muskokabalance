@@ -1,0 +1,13 @@
+# Muskoka Balance - Robots.txt
+# Allow all crawlers
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://muskokabalance.com/sitemap.xml
+
+# Disallow admin/private areas (if any in future)
+# User-agent: *
+# Disallow: /admin/
+# Disallow: /private/

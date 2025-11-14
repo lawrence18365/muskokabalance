@@ -23,6 +23,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- AOS animations -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" crossorigin="anonymous">
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 
@@ -32,11 +35,16 @@
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <div class="preloader-content">
-            <img src="logo.png" alt="Muskoka Balance" class="preloader-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="preloader-text" style="display: none;">
-                <h1 style="font-family: var(--font-primary); color: #C8A450; font-size: clamp(3rem, 8vw, 6rem); margin: 0; letter-spacing: 0.02em;">Muskoka Balance</h1>
-                <p style="font-family: var(--font-primary); color: #C8A450; font-size: clamp(1rem, 2vw, 1.5rem); margin-top: 1rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.8;">Pure. Grounded. Naturally you.</p>
+        <div class="preloader-shell">
+            <div class="preloader-orbit">
+                <div class="orbit-ring"></div>
+                <div class="orbit-ring orbit-ring--inner"></div>
+                <span class="orbit-letter">MB</span>
+                <span class="orbit-dot"></span>
+            </div>
+            <div class="preloader-caption">
+                <p class="preloader-title">Muskoka Balance</p>
+                <p class="preloader-note">Grounded greens · Lot 08 · Preparing dispatch</p>
             </div>
         </div>
     </div>
@@ -49,22 +57,11 @@
             </div>
 
             <ul class="nav-links nav-menu" id="navLinks">
-                <li><a href="greens.html#purchase" class="active">Shop</a></li>
-                <li><a href="index.html#product-highlight">Formula</a></li>
-                <li><a href="index.html#cta">Ritual</a></li>
-                <li><a href="about.html#journal">Journal</a></li>
+                <li><a href="greens.html">Grounded</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
 
-            <div class="nav-actions">
-                <button class="nav-icon-btn" aria-label="Search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-                <button class="nav-icon-btn" aria-label="Shopping bag">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                </button>
-            </div>
-
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -72,541 +69,292 @@
         </nav>
     </header>
 
-    <!-- Product Hero Section -->
-    <section class="product-hero">
-        <div class="section-container">
-            <div class="product-showcase">
-                <div class="product-image fade-in-up">
-                    <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&h=1000&fit=crop"
-                         alt="Grounded organic greens powder by Muskoka Balance">
+    <!-- Full-Screen Mobile Menu -->
+    <nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-inner">
+            <ul class="mobile-menu-list">
+                <li style="--i:1"><a href="greens.html">Grounded</a></li>
+                <li style="--i:2"><a href="about.html">About</a></li>
+                <li style="--i:3"><a href="index.html#contact">Contact</a></li>
+            </ul>
+
+            <div class="mobile-menu-footer">
+                <a href="greens.html#purchase" class="mobile-menu-cta">
+                    Reserve Lot 08
+                    <span class="btn-icon" aria-hidden="true">→</span>
+                </a>
+                <p class="mobile-menu-price">$49.99 CAD • 30-day supply</p>
+                <div class="mobile-menu-contact">
+                    <a href="tel:+17053942434">(705) 394‑2434</a>
+                    <span>•</span>
+                    <a href="mailto:muskokabalance@gmail.com">Email</a>
                 </div>
+            </div>
+        </div>
+    </nav>
 
-                <div class="product-details fade-in-up fade-in-delay-1">
-                    <p class="section-subtitle">Premium Organic Greens</p>
-                    <h1 class="product-name">Grounded</h1>
-                    <p class="product-tagline">Your daily dose of vitality</p>
+    <!-- Hero Section -->
+    <section class="hero hero--page hero--product hero--greens">
+        <div class="hero-content">
+            <div class="hero-text fade-in-up">
+                <h1 class="hero-title">Grounded</h1>
+                <p class="hero-description">
+                    Organic greens powder, cold-milled in Muskoka
+                </p>
+            </div>
+        </div>
+    </section>
 
+    <!-- Product Overview Section -->
+    <section class="product-hero" id="overview">
+        <div class="section-container">
+            <div class="product-overview-grid">
+                <figure class="product-overview-media fade-in-up">
+                    <img src="grounded_product_photo.png"
+                         alt="Grounded organic greens powder by Muskoka Balance">
+                </figure>
+
+                <div class="product-overview-panel fade-in-up fade-in-delay-1">
+                    <h2 class="product-name">Grounded</h2>
+                    <p class="product-tagline">Lot 08 — Daily greens blend</p>
                     <p class="product-description">
-                        Grounded is a carefully crafted blend of premium organic superfoods designed to nourish
-                        your body from the inside out. Each serving delivers a powerful combination of nutrient-dense
-                        greens, antioxidants, and phytonutrients to support your overall health and wellbeing.
+                        Twenty-three organic superfoods, cold-milled in Muskoka. Each scoop delivers full-spectrum nutrition without synthetic additives or artificial flavoring.
                     </p>
 
-                    <ul class="product-benefits">
-                        <li>Boosts natural energy without caffeine crashes</li>
-                        <li>Supports healthy immune function</li>
-                        <li>Promotes digestive health and regularity</li>
-                        <li>Rich in vitamins A, C, K, and essential minerals</li>
-                        <li>Alkalizes and detoxifies naturally</li>
-                        <li>100% organic, vegan, and non-GMO</li>
-                        <li>No artificial colors, flavors, or preservatives</li>
-                        <li>Sustainably sourced and eco-friendly packaging</li>
-                    </ul>
-
-                    <div class="product-price">
-                        $49.99 <span>/ 30 servings</span>
+                    <div class="product-meta-grid">
+                        <div class="product-meta-card">
+                            <span class="product-meta-label">Supply</span>
+                            <span class="product-meta-value">30 servings</span>
+                        </div>
+                        <div class="product-meta-card">
+                            <span class="product-meta-label">Weight</span>
+                            <span class="product-meta-value">210 g glass jar</span>
+                        </div>
+                        <div class="product-meta-card">
+                            <span class="product-meta-label">Profile</span>
+                            <span class="product-meta-value">Earthy, unsweetened</span>
+                        </div>
+                        <div class="product-meta-card">
+                            <span class="product-meta-label">Origin</span>
+                            <span class="product-meta-value">Bracebridge, ON</span>
+                        </div>
                     </div>
 
-                    <a href="#purchase" class="btn btn-primary" style="width: 100%; text-align: center; margin-bottom: 1rem;">Purchase Now</a>
-                    <p class="small-text text-center">
-                        Free shipping on orders over $75 | 30-day satisfaction guarantee
-                    </p>
+                    <div class="product-price">$49.99 <span>CAD</span></div>
+                    <p class="product-note">30-day supply • Free shipping over $75</p>
+
+                    <div class="purchase-actions">
+                        <a href="greens.html#purchase" class="btn btn-primary">Reserve Lot 08</a>
+                        <a href="mailto:muskokabalance@gmail.com?subject=Grounded%20Wholesale" class="btn btn-secondary">Wholesale inquiry</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Ingredients Section -->
-    <section class="ingredients-section">
+    <section class="ingredients-section page-section page-section--contrast" id="ingredients">
         <div class="section-container">
             <div class="section-header fade-in-up">
                 <p class="section-subtitle">What's Inside</p>
-                <h2 class="section-title">Premium Organic Ingredients</h2>
+                <h2 class="section-title">Ingredient ledger · Lot 08</h2>
                 <p class="lead-text">
-                    Every ingredient in Grounded has been carefully selected for its exceptional nutritional profile
-                    and scientifically-proven health benefits. We source only the highest quality certified organic superfoods.
+                    Lot 08 leans on ten botanicals for its quiet potency—harvested in small runs, dried under 45°C,
+                    and milled slow so the chlorophyll stays intact. These are the anchors we publish with every jar.
                 </p>
             </div>
 
             <div class="ingredients-grid-premium">
-                <div class="ingredient-card-premium fade-in-up">
+                <article class="ingredient-card-premium fade-in-up">
                     <div class="ingredient-icon-premium">
-                        <i class="fas fa-leaf"></i>
+                        <i class="fa-solid fa-water"></i>
                     </div>
                     <div class="ingredient-content">
-                        <h4 class="ingredient-name">Organic Kale</h4>
+                        <span class="ingredient-meta">Marine greens</span>
+                        <p class="ingredient-name">Spirulina + Chlorella</p>
+                        <p class="ingredient-line">Pacific Northwest photobioreactors</p>
                         <p class="ingredient-benefit">
-                            Packed with vitamins K, A, and C. Supports bone health and immune function.
+                            Complete plant protein with dense chlorophyll, phycocyanin, and gentle chelation support
+                            to help oxygenate morning training sessions.
                         </p>
                     </div>
-                </div>
+                </article>
 
-                <div class="ingredient-card-premium fade-in-up fade-in-delay-1">
+                <article class="ingredient-card-premium fade-in-up fade-in-delay-1">
                     <div class="ingredient-icon-premium">
-                        <i class="fas fa-seedling"></i>
+                        <i class="fa-solid fa-seedling"></i>
                     </div>
                     <div class="ingredient-content">
-                        <h4 class="ingredient-name">Organic Spinach</h4>
+                        <span class="ingredient-meta">Field grasses</span>
+                        <p class="ingredient-name">Wheatgrass + Barley Grass</p>
+                        <p class="ingredient-line">Cut at sunrise · flash dried in Muskoka</p>
                         <p class="ingredient-benefit">
-                            Rich in iron and folate. Promotes energy production and cell health.
+                            Mineral-rich blades carrying folate, potassium, and living enzymes that steady pH levels
+                            without the sweetness of juice powders.
                         </p>
                     </div>
-                </div>
+                </article>
 
-                <div class="ingredient-card-premium fade-in-up fade-in-delay-2">
+                <article class="ingredient-card-premium fade-in-up fade-in-delay-2">
                     <div class="ingredient-icon-premium">
-                        <i class="fas fa-water"></i>
+                        <i class="fa-solid fa-leaf"></i>
                     </div>
                     <div class="ingredient-content">
-                        <h4 class="ingredient-name">Organic Spirulina</h4>
+                        <span class="ingredient-meta">Garden brassicas</span>
+                        <p class="ingredient-name">Kale + Spinach + Broccoli</p>
+                        <p class="ingredient-line">Organic plots in Bracebridge + Collingwood</p>
                         <p class="ingredient-benefit">
-                            Complete plant protein with powerful antioxidants and anti-inflammatory properties.
+                            Vitamin K, iron, and sulforaphane precursors that support bone density and detox pathways
+                            while keeping the flavor profile restrained and earthy.
                         </p>
                     </div>
-                </div>
+                </article>
 
-                <div class="ingredient-card-premium fade-in-up">
-                    <div class="ingredient-icon-premium">
-                        <i class="fas fa-circle"></i>
-                    </div>
-                    <div class="ingredient-content">
-                        <h4 class="ingredient-name">Organic Chlorella</h4>
-                        <p class="ingredient-benefit">
-                            Detoxifying algae that supports immune health and heavy metal removal.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="ingredient-card-premium fade-in-up fade-in-delay-1">
-                    <div class="ingredient-icon-premium">
-                        <i class="fas fa-spa"></i>
-                    </div>
-                    <div class="ingredient-content">
-                        <h4 class="ingredient-name">Wheatgrass</h4>
-                        <p class="ingredient-benefit">
-                            Alkalizing superfood rich in chlorophyll, vitamins, and minerals.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="ingredient-card-premium fade-in-up fade-in-delay-2">
-                    <div class="ingredient-icon-premium">
-                        <i class="fas fa-tree"></i>
-                    </div>
-                    <div class="ingredient-content">
-                        <h4 class="ingredient-name">Organic Broccoli</h4>
-                        <p class="ingredient-benefit">
-                            Contains sulforaphane for cellular protection and anti-inflammatory support.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="ingredient-card-premium fade-in-up">
-                    <div class="ingredient-icon-premium">
-                        <i class="fas fa-wheat-awn"></i>
-                    </div>
-                    <div class="ingredient-content">
-                        <h4 class="ingredient-name">Barley Grass</h4>
-                        <p class="ingredient-benefit">
-                            Nutrient-dense grass with enzymes that support digestion and nutrient absorption.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="ingredient-card-premium fade-in-up fade-in-delay-1">
-                    <div class="ingredient-icon-premium">
-                        <i class="fas fa-clover"></i>
-                    </div>
-                    <div class="ingredient-content">
-                        <h4 class="ingredient-name">Alfalfa Leaf</h4>
-                        <p class="ingredient-benefit">
-                            Traditional herb rich in vitamins, minerals, and plant compounds.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How to Use Section -->
-    <section class="how-to-use">
-        <div class="section-container">
-            <div class="section-header fade-in-up">
-                <p class="section-subtitle">Simple & Effective</p>
-                <h2 class="section-title">How to Use Grounded</h2>
-                <p class="lead-text">
-                    Incorporating Grounded into your daily routine is easy. Here's how to get the most
-                    out of your premium greens powder.
-                </p>
             </div>
 
-            <div class="usage-steps">
-                <div class="usage-step fade-in-up">
-                    <div class="step-number">1</div>
-                    <h4>Measure</h4>
-                    <p>
-                        Add one scoop (included) of Grounded to 8-12 oz of water, juice, or your
-                        favorite smoothie.
-                    </p>
-                </div>
-
-                <div class="usage-step fade-in-up fade-in-delay-1">
-                    <div class="step-number">2</div>
-                    <h4>Mix</h4>
-                    <p>
-                        Shake or blend until smooth. For best results, use a blender or shaker bottle
-                        to ensure complete mixing.
-                    </p>
-                </div>
-
-                <div class="usage-step fade-in-up fade-in-delay-2">
-                    <div class="step-number">3</div>
-                    <h4>Enjoy</h4>
-                    <p>
-                        Drink immediately and feel the nourishing power of organic greens. Best taken
-                        in the morning or before workouts.
-                    </p>
-                </div>
-            </div>
-
-            <div class="about-intro fade-in-up" style="margin-top: 3rem;">
-                <h3 style="margin-bottom: 1.5rem; color: var(--gold);">Pro Tips</h3>
-                <div style="text-align: left; max-width: 800px; margin: 0 auto;">
-                    <ul class="product-benefits">
-                        <li>Start with half a scoop for the first few days to allow your body to adjust</li>
-                        <li>Mix with pineapple or apple juice for a naturally sweet flavor</li>
-                        <li>Add to your morning smoothie with banana, berries, and almond milk</li>
-                        <li>Take consistently at the same time each day for best results</li>
-                        <li>Store in a cool, dry place away from direct sunlight</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section id="benefits">
-        <div class="section-container">
-            <div class="section-header fade-in-up">
-                <p class="section-subtitle">Experience the Difference</p>
-                <h2 class="section-title">Real Benefits You Can Feel</h2>
-                <p class="lead-text">
-                    When you make Grounded part of your daily routine, your body responds with measurable improvements.
-                    Here's what our community consistently experiences.
-                </p>
-            </div>
-
-            <div class="benefits-grid-premium">
-                <div class="benefit-card-premium fade-in-up">
-                    <div class="benefit-icon-premium">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <div class="benefit-content">
-                        <h4 class="benefit-title">Sustained Energy</h4>
-                        <p class="benefit-description">
-                            Natural, clean energy without the jitters or crashes associated with caffeine.
-                            Feel vibrant and alert throughout your day.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="benefit-card-premium fade-in-up fade-in-delay-1">
-                    <div class="benefit-icon-premium">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="benefit-content">
-                        <h4 class="benefit-title">Immune Support</h4>
-                        <p class="benefit-description">
-                            Rich in vitamin C, antioxidants, and phytonutrients that help your body's
-                            natural defense systems stay strong.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="benefit-card-premium fade-in-up fade-in-delay-2">
-                    <div class="benefit-icon-premium">
-                        <i class="fas fa-heart-pulse"></i>
-                    </div>
-                    <div class="benefit-content">
-                        <h4 class="benefit-title">Digestive Wellness</h4>
-                        <p class="benefit-description">
-                            Natural enzymes and fiber support healthy digestion, regularity, and gut
-                            microbiome balance.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="benefit-card-premium fade-in-up">
-                    <div class="benefit-icon-premium">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <div class="benefit-content">
-                        <h4 class="benefit-title">Radiant Skin</h4>
-                        <p class="benefit-description">
-                            Vitamins A and C, along with powerful antioxidants, nourish your skin from
-                            within for a healthy, natural glow.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="benefit-card-premium fade-in-up fade-in-delay-1">
-                    <div class="benefit-icon-premium">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="benefit-content">
-                        <h4 class="benefit-title">Mental Clarity</h4>
-                        <p class="benefit-description">
-                            B vitamins and antioxidants support cognitive function, helping you stay
-                            focused and mentally sharp.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="benefit-card-premium fade-in-up fade-in-delay-2">
-                    <div class="benefit-icon-premium">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-                    <div class="benefit-content">
-                        <h4 class="benefit-title">pH Balance</h4>
-                        <p class="benefit-description">
-                            Alkalizing greens help balance your body's pH levels, supporting overall
-                            health and vitality.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="bg-cream">
-        <div class="section-container">
-            <div class="section-header fade-in-up">
-                <p class="section-subtitle">Questions & Answers</p>
-                <h2 class="section-title">Frequently Asked Questions</h2>
-            </div>
-
-            <div class="faq-section">
-                <div class="faq-item fade-in-up">
-                    <h4 class="faq-question">What does Grounded taste like?</h4>
-                    <p class="faq-answer">
-                        Grounded has a mild, naturally earthy flavor that's pleasant on its own but blends
-                        beautifully with juices, smoothies, and other beverages. Many customers describe it
-                        as fresh and clean-tasting, without the harsh or bitter notes found in some greens powders.
-                    </p>
-                </div>
-
-                <div class="faq-item fade-in-up fade-in-delay-1">
-                    <h4 class="faq-question">Is Grounded safe for everyone?</h4>
-                    <p class="faq-answer">
-                        Grounded is made from 100% organic whole food ingredients and is generally safe for most people.
-                        However, if you're pregnant, nursing, taking medications, or have a medical condition, we
-                        recommend consulting with your healthcare provider before starting any new supplement.
-                    </p>
-                </div>
-
-                <div class="faq-item fade-in-up fade-in-delay-2">
-                    <h4 class="faq-question">How quickly will I see results?</h4>
-                    <p class="faq-answer">
-                        Many people report feeling more energized within the first few days of taking Grounded.
-                        For more significant benefits like improved digestion, better skin, and enhanced overall
-                        wellness, we recommend consistent daily use for at least 30 days.
-                    </p>
-                </div>
-
-                <div class="faq-item fade-in-up">
-                    <h4 class="faq-question">What certifications does Grounded have?</h4>
-                    <p class="faq-answer">
-                        All ingredients in Grounded are certified organic and non-GMO. We work exclusively with
-                        suppliers who meet rigorous quality standards, and every batch is third-party tested for
-                        purity and potency.
-                    </p>
-                </div>
-
-                <div class="faq-item fade-in-up fade-in-delay-1">
-                    <h4 class="faq-question">Can I take Grounded if I have dietary restrictions?</h4>
-                    <p class="faq-answer">
-                        Yes! Grounded is 100% plant-based, making it suitable for vegans and vegetarians. It's also
-                        gluten-free, dairy-free, soy-free, and contains no common allergens. All ingredients are
-                        clearly listed on the label.
-                    </p>
-                </div>
-
-                <div class="faq-item fade-in-up fade-in-delay-2">
-                    <h4 class="faq-question">What's your return policy?</h4>
-                    <p class="faq-answer">
-                        We stand behind the quality of Grounded with a 30-day satisfaction guarantee. If you're not
-                        completely satisfied with your purchase, contact us within 30 days for a full refundno
-                        questions asked.
-                    </p>
-                </div>
-
-                <div class="faq-item fade-in-up">
-                    <h4 class="faq-question">How should I store Grounded?</h4>
-                    <p class="faq-answer">
-                        Store your Grounded powder in a cool, dry place away from direct sunlight. Keep the container
-                        tightly sealed to maintain freshness. When stored properly, Grounded will maintain its potency
-                        for up to 12 months from the manufacture date.
-                    </p>
-                </div>
-            </div>
+            <p class="ingredient-footnote fade-in-up">Full roster of 23 botanicals and lab slips ships with each jar of Grounded.</p>
         </div>
     </section>
 
     <!-- Purchase Section -->
-    <section id="purchase">
+    <section id="purchase" class="page-section page-section--contrast">
         <div class="section-container">
             <div class="section-header fade-in-up">
-                <p class="section-subtitle">Start Your Journey</p>
+                <p class="section-subtitle">Reserve</p>
                 <h2 class="section-title">Purchase Grounded</h2>
-                <p class="lead-text">
-                    Ready to experience the difference? Get your first container of Grounded today
-                    and take the first step toward a more balanced, vibrant you.
-                </p>
             </div>
 
-            <div class="product-showcase" style="margin-top: 3rem;">
-                <div class="product-image fade-in-up">
-                    <img src="https://images.unsplash.com/photo-1556910110-a6a960e3c3f3?w=800&h=1000&fit=crop"
-                         alt="Purchase Grounded greens powder">
-                </div>
-
-                <div class="product-details fade-in-up fade-in-delay-1">
-                    <h3 class="product-name" style="font-size: 2.5rem;">Grounded</h3>
-                    <p class="product-tagline">30-Day Supply</p>
-
-                    <div style="background: var(--off-white); padding: 2rem; margin: 2rem 0; border-left: 4px solid var(--gold);">
-                        <div class="product-price" style="margin-bottom: 1rem;">
-                            $49.99
+            <div class="purchase-panel">
+                <div class="reserve-card fade-in-up">
+                    <div class="reserve-card__top">
+                        <div class="reserve-card__header">
+                            <p class="reserve-eyebrow">Lot 08 allocation</p>
+                            <h3 class="reserve-title">Grounded</h3>
+                            <p class="reserve-copy">
+                                Cold-milled greens jarred weekly in Bracebridge. Each allocation ships with lab verification,
+                                grower ledger, and tasting notes.
+                            </p>
                         </div>
-
-                        <ul class="product-benefits" style="margin-bottom: 0;">
-                            <li>30 servings per container</li>
-                            <li>100% certified organic ingredients</li>
-                            <li>Free shipping on orders $75+</li>
-                            <li>30-day satisfaction guarantee</li>
-                            <li>Eco-friendly, recyclable packaging</li>
-                        </ul>
+                        <div class="reserve-card__summary">
+                            <div class="reserve-price">
+                                <span class="reserve-price__amount">$49.99</span>
+                                <span class="reserve-price__currency">CAD</span>
+                            </div>
+                            <p class="reserve-price__meta">30-day supply</p>
+                            <p class="reserve-price__note">Complimentary courier over $75</p>
+                        </div>
                     </div>
 
-                    <div class="hero-cta" style="flex-direction: column; gap: 1rem;">
-                        <a href="mailto:muskokabalance@gmail.com?subject=Grounded%20Purchase%20Inquiry"
-                           class="btn btn-primary"
-                           style="width: 100%; text-align: center;">
-                            Order Now via Email
-                        </a>
-                        <a href="tel:+17053942434"
-                           class="btn btn-secondary"
-                           style="width: 100%; text-align: center;">
-                            Call to Order: (705) 394-2434
-                        </a>
+                    <div class="reserve-card__ledger">
+                        <div class="reserve-ledger-item">
+                            <span>Format</span>
+                            <strong>210 g glass jar</strong>
+                        </div>
+                        <div class="reserve-ledger-item">
+                            <span>Milling</span>
+                            <strong>Stone drums · below 45°C</strong>
+                        </div>
+                        <div class="reserve-ledger-item">
+                            <span>Verification</span>
+                            <strong>SGS Toronto panel</strong>
+                        </div>
                     </div>
 
-                    <p class="small-text" style="margin-top: 1.5rem; text-align: center;">
-                        Secure checkout | Ships within 2-3 business days | Made fresh in Muskoka, Ontario
-                    </p>
-
-                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(201, 169, 97, 0.2);">
-                        <h4 style="margin-bottom: 1rem; color: var(--gold);">Questions about ordering?</h4>
-                        <p style="margin-bottom: 1rem;">
-                            Our team is here to help! Reach out via email or phone, and we'll be happy to
-                            assist you with your order or answer any questions you may have.
-                        </p>
-                        <a href="index.html#contact" style="color: var(--gold); text-decoration: underline;">
-                            Visit our contact page
-                        </a>
+                    <div class="reserve-card__actions">
+                        <a href="mailto:muskokabalance@gmail.com?subject=Order%20Grounded" class="btn btn-primary">Order via email</a>
+                        <a href="tel:+17053942434" class="btn btn-secondary">Call (705) 394-2434</a>
+                        <p class="reserve-response">Studio replies within one business day.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Social Proof / Testimonials -->
-    <section id="testimonials" class="bg-cream">
-        <div class="section-container">
-            <div class="section-header fade-in-up">
-                <p class="section-subtitle">Customer Love</p>
-                <h2 class="section-title">What People Are Saying</h2>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-card fade-in-up">
-                    <p class="feature-description" style="font-style: italic; margin-bottom: 1.5rem; font-size: 1.0625rem;">
-                        "I've been using Grounded for three months now, and the difference in my energy levels
-                        is incredible. I wake up feeling refreshed and stay energized all day without any caffeine!"
-                    </p>
-                    <h4 class="feature-title" style="font-size: 1rem; color: var(--gold);"> Sarah M.</h4>
-                    <p class="small-text">Toronto, ON</p>
-                </div>
-
-                <div class="feature-card fade-in-up fade-in-delay-1">
-                    <p class="feature-description" style="font-style: italic; margin-bottom: 1.5rem; font-size: 1.0625rem;">
-                        "As someone with digestive issues, Grounded has been a game-changer. My gut health has
-                        improved dramatically, and I love that it's all-natural and organic."
-                    </p>
-                    <h4 class="feature-title" style="font-size: 1rem; color: var(--gold);"> Michael R.</h4>
-                    <p class="small-text">Gravenhurst, ON</p>
-                </div>
-
-                <div class="feature-card fade-in-up fade-in-delay-2">
-                    <p class="feature-description" style="font-style: italic; margin-bottom: 1.5rem; font-size: 1.0625rem;">
-                        "I love supporting local Muskoka businesses, and Muskoka Balance delivers exceptional quality.
-                        Grounded is now a non-negotiable part of my morning routine!"
-                    </p>
-                    <h4 class="feature-title" style="font-size: 1rem; color: var(--gold);"> Emily K.</h4>
-                    <p class="small-text">Bracebridge, ON</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-grid">
+    <footer class="site-footer" data-scroll-section>
+        <div class="footer-shell">
+            <div class="footer-top">
                 <div class="footer-brand">
-                    <h3>Muskoka Balance</h3>
-                    <p>
-                        Pure. Grounded. Naturally you.
+                    <p class="footer-eyebrow">Muskoka Balance</p>
+                    <p class="footer-tagline">
+                        Organic greens milled in Bracebridge, Ontario. Small lots, cold drums, handwritten ledgers.
                     </p>
-                    <p>
-                        Premium organic greens powder crafted with care in beautiful Muskoka, Ontario.
-                        Committed to your health, our community, and our planet.
-                    </p>
+                    <a href="greens.html#purchase" class="footer-cta">
+                        Reserve Lot 08
+                        <span aria-hidden="true">→</span>
+                    </a>
+                    <p class="footer-meta">Lot 08 in allocation · Ships Canada + U.S.</p>
                 </div>
 
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
+                <div class="footer-nav">
+                    <p class="footer-heading">Index</p>
+                    <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="greens.html">Greens</a></li>
+                        <li><a href="greens.html">Grounded</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="terms.html">Terms</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-links">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="https://instagram.com/muskokabalance" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                        <li><a href="mailto:muskokabalance@gmail.com">Email Us</a></li>
-                        <li><a href="tel:+17053942434">Call Us</a></li>
-                    </ul>
+                <div class="footer-contact">
+                    <p class="footer-heading">Dispatch</p>
+                    <p class="footer-copy">Release notes, grower interviews, and clinical findings shared quietly each season.</p>
+                    <div class="footer-contact-links">
+                        <a href="https://instagram.com/muskokabalance" class="link-arrow" target="_blank" rel="noopener noreferrer">
+                            Instagram dispatches <span aria-hidden="true">→</span>
+                        </a>
+                        <a href="mailto:muskokabalance@gmail.com" class="link-arrow muted">
+                            Write to Kali <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-ledger">
+                <div class="ledger-item">
+                    <span class="ledger-label">Studio</span>
+                    <p class="ledger-value">9 Crescent Road</p>
+                    <p class="ledger-note">Bracebridge, Ontario</p>
+                </div>
+                <div class="ledger-item">
+                    <span class="ledger-label">Hours</span>
+                    <p class="ledger-value">Wed—Sat</p>
+                    <p class="ledger-note">By appointment only</p>
+                </div>
+                <div class="ledger-item">
+                    <span class="ledger-label">Phone</span>
+                    <p class="ledger-value"><a href="tel:+17053942434">(705) 394‑2434</a></p>
+                    <p class="ledger-note">Human replies 9am–5pm EST</p>
+                </div>
+                <div class="ledger-item">
+                    <span class="ledger-label">Email</span>
+                    <p class="ledger-value"><a href="mailto:muskokabalance@gmail.com">muskokabalance@gmail.com</a></p>
+                    <p class="ledger-note">Responses within 24 hours</p>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 Muskoka Balance. All rights reserved. | Handcrafted in Muskoka, Ontario</p>
-                <p style="margin-top: 0.5rem;">
-                    This product is a food supplement and is not intended to diagnose, treat, cure, or prevent any disease.
-                </p>
+                <p>&copy; 2025 Muskoka Balance. Crafted in Muskoka, Ontario.</p>
+                <p>This food supplement is not intended to diagnose, treat, cure, or prevent any disease.</p>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript -->
+    <!-- Interaction helpers -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.6/bundled/lenis.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js" crossorigin="anonymous"></script>
+
+    <!-- Load GSAP and plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/dist/index.min.js"></script>
+
+    <!-- Then load site scripts -->
     <script src="script.js"></script>
+    <script src="animations.js"></script>
 </body>
 </html>
