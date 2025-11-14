@@ -750,7 +750,11 @@ body.menu-open {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(115deg, rgba(15, 10, 6, 0.88) 0%, rgba(18, 12, 9, 0.7) 40%, rgba(22, 16, 11, 0.4) 60%, rgba(26, 18, 12, 0.15) 78%);
+    background:
+        url('backgroundwood.jpeg') center/cover no-repeat,
+        linear-gradient(115deg, rgba(15, 10, 6, 0.88) 0%, rgba(18, 12, 9, 0.7) 40%, rgba(22, 16, 11, 0.4) 60%, rgba(26, 18, 12, 0.15) 78%);
+    background-blend-mode: overlay;
+    opacity: 0.95;
     z-index: 0;
 }
 
