@@ -366,59 +366,58 @@ function initMobileMenu() {
 }
 
 // ============================================
-// HEADER SCROLL EFFECTS
+// HEADER SCROLL EFFECTS - SIMPLIFIED FOR MOBILE
 // ============================================
 
 function initHeaderScroll() {
     const header = document.getElementById('header');
     if (!header) return;
 
-    let scrollTimeout;
+    let lastKnownScrollY = 0;
+    let ticking = false;
 
-    const handleScroll = () => {
-        const currentScrollY = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+    function updateHeader() {
+        const currentScrollY = Math.max(0, window.scrollY || window.pageYOffset || document.documentElement.scrollTop);
 
-        // Don't hide header when menu is open
+        // Don't hide if menu is open
         if (state.isMenuOpen) {
-            state.lastScrollY = currentScrollY;
-            state.ticking = false;
+            lastKnownScrollY = currentScrollY;
+            ticking = false;
             return;
         }
 
-        // Add shadow when scrolled
-        header.classList.toggle('scrolled', currentScrollY > 50);
-
-        // Clear any existing timeout
-        if (scrollTimeout) {
-            clearTimeout(scrollTimeout);
+        // Add scrolled class for shadow
+        if (currentScrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
         }
 
-        // Delay the header hide/show logic slightly to prevent jitter on mobile
-        scrollTimeout = setTimeout(() => {
-            // Hide header on scroll down, show on scroll up
-            if (currentScrollY > state.lastScrollY && currentScrollY > 100) {
-                header.classList.add('header-hidden');
-            } else if (currentScrollY < state.lastScrollY || currentScrollY < 50) {
-                header.classList.remove('header-hidden');
-            }
-
-            state.lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY; // Prevent negative values
-        }, 10); // Small delay to batch scroll events
-
-        state.ticking = false;
-    };
-
-    const requestTick = () => {
-        if (!state.ticking) {
-            requestAnimationFrame(handleScroll);
-            state.ticking = true;
+        // Hide on scroll down (after 100px), show on scroll up
+        if (currentScrollY > 100 && currentScrollY > lastKnownScrollY) {
+            // Scrolling down
+            header.classList.add('header-hidden');
+        } else {
+            // Scrolling up or at top
+            header.classList.remove('header-hidden');
         }
-    };
 
-    window.addEventListener('scroll', requestTick, { passive: true });
+        lastKnownScrollY = currentScrollY;
+        ticking = false;
+    }
 
-    // Initialize lastScrollY on load
-    state.lastScrollY = window.pageYOffset || 0;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateHeader);
+            ticking = true;
+        }
+    }
+
+    // Use regular scroll event for better mobile compatibility
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Initial update
+    updateHeader();
 }
 
 // ============================================
