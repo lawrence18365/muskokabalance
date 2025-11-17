@@ -10,18 +10,9 @@
 
 // Wait for GSAP and DOM to be ready
 window.addEventListener('DOMContentLoaded', () => {
-    console.log('🎬 Muskoka Balance - Initializing scrollytelling animations...');
-
-    // Check if GSAP is loaded
     if (typeof gsap === 'undefined') {
-        console.error('❌ GSAP not loaded. Premium animations disabled.');
-        console.log('Make sure GSAP scripts are loaded before animations.js');
         return;
     }
-
-    console.log('✅ GSAP loaded successfully');
-    console.log('✅ ScrollTrigger plugin:', typeof ScrollTrigger !== 'undefined' ? 'loaded' : 'missing');
-    console.log('✅ SplitType library:', typeof SplitType !== 'undefined' ? 'loaded' : 'missing');
 
     initScrollAnimations();
 });
@@ -47,36 +38,10 @@ function initScrollAnimations() {
     }
 
     // ============================================
-    // LENIS SMOOTH SCROLL SETUP (Community-approved for 60fps)
+    // NATIVE SCROLL - No virtual scroll interception
     // ============================================
 
-    let lenis;
-    if (typeof Lenis !== 'undefined') {
-        lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            orientation: 'vertical',
-            gestureOrientation: 'vertical',
-            smoothWheel: true,
-            wheelMultiplier: 1,
-            smoothTouch: false,
-            touchMultiplier: 2,
-            infinite: false,
-        });
-
-        // Sync Lenis with GSAP ScrollTrigger (critical for smooth parallax!)
-        lenis.on('scroll', ScrollTrigger.update);
-
-        // Add Lenis to GSAP ticker for perfect frame sync
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
-
-        // Disable lag smoothing for consistent performance
-        gsap.ticker.lagSmoothing(0);
-
-        console.log('✅ Lenis smooth scroll initialized - 60fps target');
-    }
+    // Native browser scrolling - responsive and performant
 
     // ============================================
     // 1. HERO SECTION - TEXT REVEAL ANIMATION
@@ -175,32 +140,33 @@ function initScrollAnimations() {
     }
 
     // ============================================
-    // 4. PARALLAX SCROLLING (Hero Background)
+    // 4. PARALLAX SCROLLING (Hero Background) - SIMPLIFIED
     // ============================================
 
+    // Reduced scrub value for more responsive feel
     gsap.to('.hero', {
         scrollTrigger: {
             trigger: '.hero',
             start: 'top top',
             end: 'bottom top',
-            scrub: 1.5
+            scrub: 0.3  // Reduced from 1.5 - much more responsive
         },
-        opacity: 0.3,
-        scale: 1.1,
+        opacity: 0.5,  // Less dramatic change
+        scale: 1.05,   // Subtle scale
         ease: 'none'
     });
 
-    // Hide scroll indicator on scroll
+    // Hide scroll indicator on scroll - simplified
     gsap.to('.scroll-indicator', {
         scrollTrigger: {
             trigger: '.hero',
             start: 'top top',
-            end: '20% top',
-            scrub: true
+            end: '10% top',  // Faster hide
+            scrub: 0.2  // More responsive
         },
         opacity: 0,
-        y: -20,
-        ease: 'power2.inOut'
+        y: -10,
+        ease: 'none'
     });
 
     // ============================================
@@ -272,7 +238,7 @@ function initScrollAnimations() {
     });
 
     // ============================================
-    // 8. FEATURE ITEMS - SCALE ON SCROLL
+    // 8. FEATURE ITEMS - SCALE ON SCROLL (SIMPLIFIED)
     // ============================================
 
     gsap.utils.toArray('.feature-item').forEach((item) => {
@@ -280,35 +246,20 @@ function initScrollAnimations() {
             scrollTrigger: {
                 trigger: item,
                 start: 'top 85%',
-                end: 'top 60%',
-                scrub: 1
+                end: 'top 70%',
+                scrub: 0.3  // Reduced from 1 - more responsive
             },
-            scale: 0.9,
-            opacity: 0.5,
-            ease: 'power2.out'
+            scale: 0.95,   // Subtle scale change
+            opacity: 0.7,  // Less dramatic
+            ease: 'none'
         });
     });
 
     // ============================================
-    // 10. SECTION BACKGROUNDS - PARALLAX
+    // 10. SECTION BACKGROUNDS - PARALLAX (DISABLED)
     // ============================================
 
-    gsap.utils.toArray('[data-scroll-section]').forEach((section) => {
-        const bg = section.querySelector('.section-bg');
-
-        if (bg) {
-            gsap.to(bg, {
-                scrollTrigger: {
-                    trigger: section,
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    scrub: 1.5
-                },
-                y: '-30%',
-                ease: 'none'
-            });
-        }
-    });
+    // Background parallax disabled for performance
 
     // ============================================
     // 11. TESTIMONIALS - FADE & SLIDE
@@ -365,11 +316,6 @@ function initScrollAnimations() {
     // 13. PERFORMANCE MONITORING
     // ============================================
 
-    // Log ScrollTrigger performance
-    ScrollTrigger.addEventListener('refresh', () => {
-        console.log('ScrollTrigger refreshed');
-    });
-
     // Refresh on window resize (debounced)
     let resizeTimer;
     window.addEventListener('resize', () => {
@@ -383,10 +329,7 @@ function initScrollAnimations() {
     // 14. SIMPLE FIXED PARALLAX (NO CONFLICTS)
     // ============================================
 
-    // REMOVED - was causing lag and conflicts
-    // Images will stay truly fixed using CSS only
-
-    console.log('✅ Parallax handled by CSS - zero JS conflicts');
+    // Parallax handled by CSS only
 
     // ============================================
     // 15. ACCESSIBILITY - PAUSE ANIMATIONS
@@ -400,8 +343,6 @@ function initScrollAnimations() {
             gsap.globalTimeline.resume();
         }
     });
-
-    console.log('✨ Premium scrollytelling animations initialized');
 }
 
 // ============================================
@@ -410,8 +351,6 @@ function initScrollAnimations() {
 
 // Smooth scroll polyfill for older browsers
 if (!('scrollBehavior' in document.documentElement.style)) {
-    console.log('Adding smooth scroll polyfill');
-
     const smoothScrollPolyfill = document.createElement('script');
     smoothScrollPolyfill.src = 'https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js';
     document.head.appendChild(smoothScrollPolyfill);

@@ -57,11 +57,13 @@ function isMobile() {
 }
 
 // ============================================
-// PRELOADER (Optimized)
+// PRELOADER (iOS-Safe with Autoplay Fallback)
 // ============================================
 
 function initPreloader() {
     const preloader = document.querySelector('.preloader');
+    const preloaderVideo = document.getElementById('preloaderVideo');
+    const preloaderFallback = document.getElementById('preloaderFallback');
 
     // ALWAYS add loaded class immediately to prevent hiding content
     document.body.classList.add('loaded');
@@ -69,6 +71,15 @@ function initPreloader() {
     if (!preloader) {
         document.body.style.overflow = '';
         return;
+    }
+
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+        // Skip video entirely for accessibility
+        if (preloaderVideo) preloaderVideo.style.display = 'none';
+        if (preloaderFallback) preloaderFallback.style.display = 'flex';
     }
 
     if (state.hasSeenPreloader) {
@@ -81,17 +92,70 @@ function initPreloader() {
     // First visit - show preloader
     document.body.style.overflow = 'hidden';
 
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            preloader.classList.add('hidden');
+    const exitPreloader = () => {
+        if (!preloader || preloader.classList.contains('hidden')) return;
 
-            setTimeout(() => {
-                document.body.style.overflow = '';
-                preloader.remove();
-                sessionStorage.setItem('preloaderSeen', 'true');
-            }, 1600);
-        }, 2500);
-    }, { once: true });
+        preloader.classList.add('hidden');
+
+        setTimeout(() => {
+            document.body.style.overflow = '';
+            preloader.remove();
+            sessionStorage.setItem('preloaderSeen', 'true');
+        }, 1200);
+    };
+
+    const triggerWhiteout = () => {
+        if (!preloader) return;
+        preloader.classList.add('preloader--whiteout');
+    };
+
+    const scheduleSequence = () => {
+        if (!preloader || scheduleSequence.started) return;
+        scheduleSequence.started = true;
+
+        // Shorter timing - max 3 seconds for premium feel
+        setTimeout(triggerWhiteout, 2500);
+        setTimeout(exitPreloader, 3000);
+    };
+    scheduleSequence.started = false;
+
+    // iOS-safe autoplay detection
+    const tryAutoplay = async () => {
+        if (!preloaderVideo) {
+            scheduleSequence();
+            return;
+        }
+
+        // Ensure attributes are set (Safari checks HTML attributes)
+        preloaderVideo.muted = true;
+        preloaderVideo.playsInline = true;
+
+        try {
+            const playPromise = preloaderVideo.play();
+            if (playPromise && typeof playPromise.then === 'function') {
+                await playPromise;
+            }
+        } catch (e) {
+            // Autoplay blocked - handled below
+        }
+
+        // Check if autoplay actually worked
+        // Small delay to let video initialize
+        setTimeout(() => {
+            const autoplayFailed = preloaderVideo.paused || preloaderVideo.currentTime === 0;
+
+            if (autoplayFailed && preloaderFallback) {
+                // Autoplay blocked (Low Power Mode, etc.)
+                // Hide video and show fallback UI
+                preloaderVideo.style.display = 'none';
+                preloaderFallback.style.display = 'flex';
+            }
+
+            scheduleSequence();
+        }, 100);
+    };
+
+    window.addEventListener('load', tryAutoplay, { once: true });
 }
 
 // ============================================
@@ -571,8 +635,6 @@ function initLazyLoading() {
 // ============================================
 
 function trackEvent(category, action, label) {
-    console.log('📊 Event:', { category, action, label });
-
     // Add your analytics here:
     // if (typeof gtag !== 'undefined') {
     //     gtag('event', action, { event_category: category, event_label: label });
@@ -616,31 +678,6 @@ function initAccessibility() {
     document.body.insertBefore(skipLink, document.body.firstChild);
 }
 
-// ============================================
-// PERFORMANCE MONITORING
-// ============================================
-
-function logPerformance() {
-    if (!window.performance) return;
-
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const perfData = window.performance.timing;
-            const loadTime = perfData.loadEventEnd - perfData.navigationStart;
-            console.log(`⚡ Page loaded in ${loadTime}ms`);
-        }, 0);
-    }, { once: true });
-}
-
-// ============================================
-// CONSOLE GREETING
-// ============================================
-
-function showGreeting() {
-    console.log('%c🌿 Muskoka Balance', 'color: #C8A450; font-size: 24px; font-weight: bold;');
-    console.log('%cPure. Grounded. Naturally you.', 'color: #241609; font-size: 14px;');
-    console.log('%c\n📧 muskokabalance@gmail.com', 'color: #C8A450; font-size: 12px;');
-}
 
 // ============================================
 // MAIN INITIALIZATION
@@ -665,40 +702,11 @@ function init() {
     initAnalytics();
     initAccessibility();
 
-    // Initialize AOS (Animate On Scroll) if available
-    // This needs to run AFTER AOS library loads
-    if (typeof AOS !== 'undefined') {
-        try {
-            AOS.init({
-                duration: 700,
-                offset: 120,
-                easing: 'ease-out-cubic',
-                once: false,
-                mirror: false,
-                disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-                startEvent: 'load' // Initialize on window load
-            });
-            console.log('✅ AOS initialized');
-        } catch (error) {
-            console.error('AOS initialization failed:', error);
-            // Fallback: show all AOS elements
-            document.querySelectorAll('[data-aos]').forEach(el => {
-                el.style.opacity = '1';
-                el.style.transform = 'none';
-            });
-        }
-    } else {
-        console.warn('⚠️ AOS library not loaded, showing all content');
-        // Fallback: show all AOS elements
-        document.querySelectorAll('[data-aos]').forEach(el => {
-            el.style.opacity = '1';
-            el.style.transform = 'none';
-        });
-    }
-
-    // Monitoring
-    logPerformance();
-    showGreeting();
+    // Show all elements that had AOS attributes
+    document.querySelectorAll('[data-aos]').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+    });
 }
 
 // ============================================
