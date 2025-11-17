@@ -702,11 +702,23 @@ function init() {
     initAnalytics();
     initAccessibility();
 
-    // Show all elements that had AOS attributes
-    document.querySelectorAll('[data-aos]').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-    });
+    // Initialize AOS (Animate On Scroll)
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 700,
+            offset: 120,
+            easing: 'ease-out-cubic',
+            once: true,
+            mirror: false,
+            disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        });
+    } else {
+        // Fallback: show all AOS elements
+        document.querySelectorAll('[data-aos]').forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
+    }
 }
 
 // ============================================
