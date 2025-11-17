@@ -12,7 +12,7 @@
 const CONFIG = {
     enableCustomCursor: false, // DISABLED - causing cursor to disappear
     enableScrollProgress: true,
-    enableMagneticButtons: true,
+    enableMagneticButtons: false, // DISABLED - removing magnetic button effect
     enableParallax: false, // Disabled to prevent layout bugs
     scrollProgressHeight: '2px',
     debounceDelay: 10
