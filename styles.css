@@ -750,17 +750,12 @@ body.menu-open {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
     overflow: hidden;
-    /* Fix layout shift bugs */
-    will-change: auto;
-    transform: translateZ(0);
-    backface-visibility: hidden;
 }
 
 @media (max-width: 992px) {
     .hero {
-        background-attachment: scroll;
+        /* Mobile adjustments if needed */
     }
 }
 
