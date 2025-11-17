@@ -108,36 +108,10 @@ function initScrollAnimations() {
     });
 
     // ============================================
-    // 3. MAGNETIC BUTTONS (Desktop Only)
+    // 3. MAGNETIC BUTTONS (DISABLED)
     // ============================================
 
-    if (!isMobile && !isTablet) {
-        const magneticButtons = document.querySelectorAll('.hero-btn-1');
-
-        magneticButtons.forEach(button => {
-            button.addEventListener('mousemove', (e) => {
-                const rect = button.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-
-                gsap.to(button, {
-                    x: x * 0.3,
-                    y: y * 0.3,
-                    duration: 0.6,
-                    ease: 'power2.out'
-                });
-            });
-
-            button.addEventListener('mouseleave', () => {
-                gsap.to(button, {
-                    x: 0,
-                    y: 0,
-                    duration: 0.6,
-                    ease: 'elastic.out(1, 0.5)'
-                });
-            });
-        });
-    }
+    // Magnetic button effect removed for cleaner UX
 
     // ============================================
     // 4. PARALLAX SCROLLING (Hero Background) - SIMPLIFIED
