@@ -737,14 +737,16 @@ body.menu-open {
 .hero {
     --hero-image: url('herobg.png');
     min-height: 100vh;
-    min-height: 100dvh; /* Dynamic viewport height for mobile/laptop */
+    min-height: 100svh; /* Small viewport height - actual visible area */
     height: 100vh;
-    height: 100dvh;
+    height: 100svh;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     position: relative;
     padding: 0;
+    margin: 0;
     background-color: #000000; /* Black fallback to prevent gaps */
     background-image: var(--hero-image);
     background-position: center center;
