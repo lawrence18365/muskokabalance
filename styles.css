@@ -737,9 +737,9 @@ body.menu-open {
 .hero {
     --hero-image: url('herobg.png');
     min-height: 100vh;
-    min-height: 100svh; /* Small viewport height - actual visible area */
+    min-height: 100lvh; /* Large viewport height - fills entire viewport */
     height: 100vh;
-    height: 100svh;
+    height: 100lvh;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
