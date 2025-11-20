@@ -1134,11 +1134,12 @@ body.menu-open {
     }
 
     .hero::before {
-        background: linear-gradient(150deg, rgba(10, 6, 4, 0.72) 0%, rgba(12, 8, 5, 0.42) 45%, rgba(18, 12, 8, 0.1) 100%);
+        background: linear-gradient(140deg, rgba(12, 8, 5, 0.72) 0%, rgba(14, 9, 6, 0.48) 44%, rgba(18, 12, 8, 0.15) 100%);
     }
 
     .hero::after {
-        opacity: 0;
+        opacity: 0.25;
+        background: radial-gradient(circle at 65% 35%, rgba(8, 6, 5, 0.45) 0%, rgba(5, 4, 3, 0.18) 40%, transparent 70%);
     }
 
     .hero-content {
